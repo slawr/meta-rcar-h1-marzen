@@ -12,6 +12,8 @@ KMACHINE_rcar-h1-marzen  = "rcar-h1-marzen"
 
 KERNEL_FEATURES_append_rcar-h1-marzen += " cfg/smp.scc"
 
+LINUX_VERSION = "3.4.15"
+
 SRC_URI += "file://rcar-h1-marzen-standard.scc \
             file://rcar-h1-marzen.scc \
             file://rcar-h1-marzen.cfg \
