@@ -14,6 +14,8 @@ KERNEL_FEATURES_append_rcar-h1-marzen += " cfg/smp.scc"
 
 LINUX_VERSION = "3.4.15"
 
+# Greg's 3.4.15 tag
+SRCREV = "553f672df76c6213b9a7e644b1d878204a61e013"
 
 SRC_URI += " \
 	file://rcar-h1-marzen-standard.scc \
