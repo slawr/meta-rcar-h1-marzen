@@ -15,13 +15,24 @@ This layer depends on:
   layers: meta
   branch: master
 
+Toolchain
+---------
 The Marzen BSP is developed and tested using the GCC toolchain 
 Code Sourcery G++ Lite 2010.09-50 for ARM GNU/Linux which can be obtained from here:
 http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/
 
+To direct Yocto to use this toolchain you should add the following entries to 
+your local.conf in poky/build/conf/:
+TCMODE = "external-csl"
+EXTERNAL_TOOLCHAIN = "/home/user/tools/arm-2010.09"
+CSL_VER_MAIN = "2010.09-50"
+TARGET_PREFIX = "arm-none-linux-gnueabi-"
+
+EXTERNAL_TOOLCHAIN should point to the root directory of where the toolchain was installed.
+
+
 Patches
 =======
-
 This layer will be upstreamed to the Yocto project. Until that is achieved 
 please submit any patches against this BSP to the maintainer.
 
@@ -33,14 +44,10 @@ Table of Contents
 
   I. Building the meta-rcar-h1-marzen BSP layer
  II. Booting the images in /binary
-
+III. Kernel notes
 
 I. Building the meta-rcar-h1-marzen BSP layer
 =============================================
-
-In order to build an image with BSP support for a given release, you
-need to download the corresponding BSP tarball from the 'Board Support
-Package (BSP) Downloads' page of the Yocto Project website.
 
 Assuming you extracted the BSP tarball contents at the top-level of 
 your yocto build tree, you can build a rcar-h1-marzen image by adding 
@@ -59,12 +66,11 @@ You should then be able to build a rcar-h1-marzen image as such:
   $ source oe-init-build-env
   $ bitbake core-image-minimal
 
-To build the kernel alone:
+To build the kernel alone, using the mainline kernel recipe:
   $ bitbake linux-mainline
 
-At the end of a successful build, you should have a live image that
-you can boot from a USB flash drive (see instructions on how to do
-that below, in the section 'Booting the images from /binary').
+To build u-boot alone:
+  $ bitbake u-boot
 
 
 II. Booting the images in /binary
@@ -83,7 +89,8 @@ Hardware
 The serial port on the R-Car H1 device is attached to a serial to 
 USB convertor on the Marzen board. Please connect a PC to the board 
 using a mini-USB cable on connector CN18 (DEBUG0). You may need to 
-install drivers for the Silicon Labs CP210x USB to UART Bridge.
+install drivers for the Silicon Labs CP210x USB to UART Bridge on 
+your host PC.
 
 The serial settings are:
 Baud rate: 115200
@@ -147,19 +154,9 @@ static IP addresses are used.
 nfsroot=${serverip}:/tftpboot/marzen ip=${ipaddr}
   $ saveenv
 
-Kernel
-======
-USB Host:
-When you insert a formatted USB stick, you will see notification messages. 
-You can then mount the stick, for example:
-  $ mkdir –p /mnt/usb
-  $ mount /dev/sda1 /mnt/usb
 
-SD:
-When you insert a formatted microSD card, you will see notification messages. 
-You can then mount the card, for example:
-  $ mkdir –p /mnt/sd
-  $ mount /dev/mmcblk0p1 /mnt/sd
+III. Kernel notes
+=================
 
 Display:
 The display resolution can be changed using the fbset tool, for example:
@@ -180,36 +177,15 @@ By default the audio output is muted. To change this, run:
 You can play PCM audio, for example:
   $ aplay music.wav
 
---- replace with specific instructions for your platform ---
+USB Host:
+When you insert a formatted USB stick, you will see notification messages. 
+You can then mount the stick, for example:
+  $ mkdir –p /mnt/usb
+  $ mount /dev/sda1 /mnt/usb
 
-This BSP contains bootable live images, which can be used to directly
-boot Yocto off of a USB flash drive.
+SD:
+When you insert a formatted microSD card, you will see notification messages. 
+You can then mount the card, for example:
+  $ mkdir –p /mnt/sd
+  $ mount /dev/mmcblk0p1 /mnt/sd
 
-Under Linux, insert a USB flash drive.  Assuming the USB flash drive
-takes device /dev/sdf, use dd to copy the live image to it.  For
-example:
-
-# dd if=core-image-sato-rcar-h1-marzen-20101207053738.hddimg of=/dev/sdf
-# sync
-# eject /dev/sdf
-
-This should give you a bootable USB flash device.  Insert the device
-into a bootable USB socket on the target, and power on.  This should
-result in a system booted to the Sato graphical desktop.
-
-If you want a terminal, use the arrows at the top of the UI to move to
-different pages of available applications, one of which is named
-'Terminal'.  Clicking that should give you a root terminal.
-
-If you want to ssh into the system, you can use the root terminal to
-ifconfig the IP address and use that to ssh in.  The root password is
-empty, so to log in type 'root' for the user name and hit 'Enter' at
-the Password prompt: and you should be in.
-
-----
-
-If you find you're getting corrupt images on the USB (it doesn't show
-the syslinux boot: prompt, or the boot: prompt contains strange
-characters), try doing this first:
-
-# dd if=/dev/zero of=/dev/sdf bs=1M count=512
