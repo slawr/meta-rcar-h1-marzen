@@ -1,7 +1,7 @@
-From 7fcd5dbf068ac7e3fcf1f6da2958561fb2b80eaf Mon Sep 17 00:00:00 2001
+From 2920325d50117ccef665a7bc6be4f6df8aec2643 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Fri, 22 Jun 2012 17:01:51 +0100
-Subject: [PATCH 37/76] usb: host: Add USB host EHCI controller for R-Car
+Subject: [PATCH 037/106] usb: host: Add USB host EHCI controller for R-Car
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

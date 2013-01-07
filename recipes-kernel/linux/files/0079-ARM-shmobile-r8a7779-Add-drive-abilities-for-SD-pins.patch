@@ -1,0 +1,41 @@
+From 48c1dc4332ccaf75a80776d4d26cf42283a37808 Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Mon, 19 Nov 2012 15:06:45 +0000
+Subject: [PATCH 079/106] ARM: shmobile: r8a7779: Add drive abilities for SD
+ pins
+
+Based on work by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ arch/arm/mach-shmobile/board-marzen.c |   14 ++++++++++++++
+ 1 files changed, 14 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-shmobile/board-marzen.c b/arch/arm/mach-shmobile/board-marzen.c
+index ef4ff56..eb9e2ad 100644
+--- a/arch/arm/mach-shmobile/board-marzen.c
++++ b/arch/arm/mach-shmobile/board-marzen.c
+@@ -722,6 +722,20 @@ static void __init marzen_init(void)
+ 	gpio_request(GPIO_FN_SD0_CD, NULL);
+ 	gpio_request(GPIO_FN_SD0_WP, NULL);
+ 
++	/* SD control registers IOCTRLn: SD pins driving ability */
++	{
++		void __iomem *base = ioremap_nocache(0xfffc0000, 0x100);
++		iowrite32(~0x9aaa9aaa, base);		/* PMMR */
++		iowrite32(0x9aaa9aaa, base + 0x60);	/* IOCTRL0 */
++		iowrite32(~0x80009aaa, base);		/* PMMR */
++		iowrite32(0x80009aaa, base + 0x64);	/* IOCTRL1 */
++		iowrite32(~0x80009aaa, base);		/* PMMR */
++		iowrite32(0x80009aaa, base + 0x68);	/* IOCTRL2 */
++		iowrite32(~0x000001aa, base);		/* PMMR */
++		iowrite32(0x000001aa, base + 0x6c);	/* IOCTRL3 */
++		iounmap(base);
++	}
++
+ 	/* HSPI 0 */
+ 	gpio_request(GPIO_FN_HSPI_CLK0,	NULL);
+ 	gpio_request(GPIO_FN_HSPI_CS0,	NULL);
+-- 
+1.7.5.4
+

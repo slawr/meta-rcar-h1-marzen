@@ -1,7 +1,7 @@
-From dc12be997747d77bf92d47d844d98dccad869a9c Mon Sep 17 00:00:00 2001
+From 921f4411c78021ed49d85b24a412fb32701f470c Mon Sep 17 00:00:00 2001
 From: Simon Horman <horms@verge.net.au>
 Date: Sat, 25 Aug 2012 15:31:47 +0900
-Subject: [PATCH 26/76] ARM: mach-shmobile: marzen: defconfig update
+Subject: [PATCH 026/106] ARM: mach-shmobile: marzen: defconfig update
 
 Update marzen defconfig
 * Enable MMC Block device as SDHI hw is now supported.
@@ -16,6 +16,7 @@ to create the new defconfig.
 Cc: Phil Edworthy <phil.edworthy@renesas.com>
 Cc: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Signed-off-by: Simon Horman <horms@verge.net.au>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/configs/marzen_defconfig |   15 ++++++++++-----
  1 files changed, 10 insertions(+), 5 deletions(-)

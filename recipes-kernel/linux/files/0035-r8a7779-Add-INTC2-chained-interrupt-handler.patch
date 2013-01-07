@@ -1,7 +1,7 @@
-From 6e531ec72e317a932a41b9021488287bc1aefa6a Mon Sep 17 00:00:00 2001
+From e5dafbe9e8dffabcf1dc260ed744d90ba64ca518 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Tue, 10 Jul 2012 09:52:29 +0100
-Subject: [PATCH 35/76] r8a7779: Add INTC2 chained interrupt handler
+Subject: [PATCH 035/106] r8a7779: Add INTC2 chained interrupt handler
 
 This handles shared interrupts from on-chip peripherals.
 

@@ -1,0 +1,38 @@
+From 027f902c61d380a139570bd3fe36e2ba5b41b275 Mon Sep 17 00:00:00 2001
+From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+Date: Mon, 12 Nov 2012 09:19:25 +0900
+Subject: [PATCH 086/106] video: rcarfb: Fix error code in set color register
+ function
+
+Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ drivers/video/rcarfb.c |    5 +----
+ 1 files changed, 1 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/video/rcarfb.c b/drivers/video/rcarfb.c
+index 75494ff..388923b 100644
+--- a/drivers/video/rcarfb.c
++++ b/drivers/video/rcarfb.c
+@@ -388,9 +388,6 @@ static int rcar_du_setcolreg(u_int regno,
+ 		break;
+ 	case BITPARPIXEL_24:
+ 	case BITPARPIXEL_32:
+-		if (regno >= 256)
+-			return 1;
+-
+ 		palette = info->pseudo_palette;
+ 		palette[regno] = ((transp & 0xff00) << 16) |
+ 				((red & 0xff00) << 8) |
+@@ -398,7 +395,7 @@ static int rcar_du_setcolreg(u_int regno,
+ 				((blue & 0xff00) >> 8);
+ 		break;
+ 	default:
+-		return 1;
++		return -EINVAL;
+ 	}
+ 
+ 	return 0;
+-- 
+1.7.5.4
+

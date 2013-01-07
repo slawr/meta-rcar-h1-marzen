@@ -1,7 +1,7 @@
-From 3645300f8990be45008a91043767889f09d422af Mon Sep 17 00:00:00 2001
+From 0c8386ee3c7bd8ac651e15213b95990a6058f2c8 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Wed, 11 Jul 2012 16:54:28 +0100
-Subject: [PATCH 51/76] r8a7779: Add Display Unit clock support
+Subject: [PATCH 051/106] r8a7779: Add Display Unit clock support
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

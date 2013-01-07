@@ -1,7 +1,7 @@
-From 07522493f55a906f377b34f17b3ab8f1fc1e735e Mon Sep 17 00:00:00 2001
+From 0821edae361980eaea3e2c953b8cb6898a2005fa Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Mon, 13 Aug 2012 07:52:59 +0100
-Subject: [PATCH 61/76] net: sh_eth: Add eth support for R8A7779 device
+Subject: [PATCH 061/106] net: sh_eth: Add eth support for R8A7779 device
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

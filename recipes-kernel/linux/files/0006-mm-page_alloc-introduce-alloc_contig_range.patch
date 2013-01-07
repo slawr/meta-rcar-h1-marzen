@@ -1,7 +1,7 @@
-From 4c446e93d11f5c929eeb4941e08a3fcf0cd3a428 Mon Sep 17 00:00:00 2001
+From 235bbdb2187e326ae35c9366f26845752ebc1edb Mon Sep 17 00:00:00 2001
 From: Michal Nazarewicz <mina86@mina86.com>
 Date: Thu, 29 Dec 2011 13:09:50 +0100
-Subject: [PATCH 06/76] mm: page_alloc: introduce alloc_contig_range()
+Subject: [PATCH 006/106] mm: page_alloc: introduce alloc_contig_range()
 
 This commit adds the alloc_contig_range() function which tries
 to allocate given range of pages.  It tries to migrate all
@@ -18,6 +18,7 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  include/linux/gfp.h |    8 ++
  mm/page_alloc.c     |  188 +++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -41,7 +42,7 @@ index 581e74b..052a5b6 100644
 +
  #endif /* __LINUX_GFP_H */
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 6fb46c1..2c38a30 100644
+index 539a535..7b46644 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -57,6 +57,7 @@

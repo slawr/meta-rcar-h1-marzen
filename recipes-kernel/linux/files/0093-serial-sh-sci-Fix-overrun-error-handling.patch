@@ -1,0 +1,40 @@
+From 0e2d507418902f8de527f6758689df8c3dbfe2d1 Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Mon, 19 Nov 2012 16:28:32 +0000
+Subject: [PATCH 093/106] serial: sh-sci: Fix overrun error handling
+
+Based on work by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ drivers/tty/serial/sh-sci.c |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/tty/serial/sh-sci.c b/drivers/tty/serial/sh-sci.c
+index 3158e17..0ad77c6 100644
+--- a/drivers/tty/serial/sh-sci.c
++++ b/drivers/tty/serial/sh-sci.c
+@@ -950,6 +950,7 @@ static irqreturn_t sci_mpxed_interrupt(int irq, void *ptr)
+ 	unsigned short ssr_status, scr_status, err_enabled;
+ 	struct uart_port *port = ptr;
+ 	struct sci_port *s = to_sci_port(port);
++	struct plat_sci_reg *reg;
+ 	irqreturn_t ret = IRQ_NONE;
+ 
+ 	ssr_status = serial_port_in(port, SCxSR);
+@@ -973,6 +974,12 @@ static irqreturn_t sci_mpxed_interrupt(int irq, void *ptr)
+ 	if ((ssr_status & SCxSR_ERRORS(port)) && err_enabled)
+ 		ret = sci_er_interrupt(irq, ptr);
+ 
++	/* Overrun */
++	reg = sci_getreg(port, SCLSR);
++	if (reg->size)
++		if ((serial_port_in(port, SCLSR) & (1 << s->cfg->overrun_bit)))
++			ret = sci_er_interrupt(irq, ptr);
++
+ 	/* Break Interrupt */
+ 	if ((ssr_status & SCxSR_BRK(port)) && err_enabled)
+ 		ret = sci_br_interrupt(irq, ptr);
+-- 
+1.7.5.4
+

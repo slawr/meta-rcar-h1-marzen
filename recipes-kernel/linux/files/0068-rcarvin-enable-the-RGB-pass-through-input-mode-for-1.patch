@@ -1,7 +1,7 @@
-From ddc61d1a1e329f3bbf7603b341ede050e273c4f1 Mon Sep 17 00:00:00 2001
+From 588d7c072a6f9b0d53a0f7a9353ab3e7b3358eef Mon Sep 17 00:00:00 2001
 From: Katsuya Matsubara <matsu@igel.co.jp>
 Date: Thu, 14 Jun 2012 19:48:16 +0900
-Subject: [PATCH 68/76] rcarvin: enable the RGB pass through input mode for
+Subject: [PATCH 068/106] rcarvin: enable the RGB pass through input mode for
  12/18/24-bit bus, RGB-666/888
 
 This enables the RGB pass through input mode to support 12/18/24-bit bus,

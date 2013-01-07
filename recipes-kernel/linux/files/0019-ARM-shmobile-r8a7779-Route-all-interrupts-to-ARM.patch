@@ -1,7 +1,7 @@
-From 5b49eba8a9f2d7e829221648dae220a7c2f87d4e Mon Sep 17 00:00:00 2001
+From 1b1aa36bf9355e33c88c568a0a76a092a857bdd8 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Sat, 23 Jun 2012 01:12:09 +0200
-Subject: [PATCH 19/76] ARM: shmobile: r8a7779: Route all interrupts to ARM
+Subject: [PATCH 019/106] ARM: shmobile: r8a7779: Route all interrupts to ARM
 
 Without this, the interrupts for I2C, VIN, GPIO, SDHC, HSCIF and
 HPB-DMAC are sent to the SH processor.

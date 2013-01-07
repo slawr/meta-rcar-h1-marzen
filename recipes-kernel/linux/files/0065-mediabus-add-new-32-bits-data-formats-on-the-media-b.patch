@@ -1,7 +1,7 @@
-From 9929a8c24edc514e74e8f28a4ea8e2ee63cf3b10 Mon Sep 17 00:00:00 2001
+From 1c94213a209c468e41f2af6c34bf36a777976248 Mon Sep 17 00:00:00 2001
 From: Katsuya Matsubara <matsu@igel.co.jp>
 Date: Thu, 31 May 2012 11:46:22 +0900
-Subject: [PATCH 65/76] mediabus: add new 32 bits data formats on the media
+Subject: [PATCH 065/106] mediabus: add new 32 bits data formats on the media
  bus
 
 This adds the following RGB data formats which mean each pixel

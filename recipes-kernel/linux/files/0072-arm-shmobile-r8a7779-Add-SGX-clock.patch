@@ -1,8 +1,10 @@
-From 6d7f09e4374f4951d3de3789b66bc3a0108fdde4 Mon Sep 17 00:00:00 2001
+From 8d5e6218760dfda9e91f1516720dbfeb7bf044dd Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Wed, 17 Oct 2012 10:59:35 +0100
-Subject: [PATCH 72/76] arm: shmobile: r8a7779: Add SGX clock
+Subject: [PATCH 072/106] arm: shmobile: r8a7779: Add SGX clock
 
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/mach-shmobile/clock-r8a7779.c |    5 ++++-
  1 files changed, 4 insertions(+), 1 deletions(-)

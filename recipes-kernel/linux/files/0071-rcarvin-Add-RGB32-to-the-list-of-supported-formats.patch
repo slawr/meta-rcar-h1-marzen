@@ -1,7 +1,7 @@
-From 3bc1985b2435c68bc0490005b431302b901eb9d2 Mon Sep 17 00:00:00 2001
+From 30556e9821c3b9280e7e65ad7345f48e658f4d05 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Fri, 5 Oct 2012 10:46:14 +0100
-Subject: [PATCH 71/76] rcarvin: Add RGB32 to the list of supported formats
+Subject: [PATCH 071/106] rcarvin: Add RGB32 to the list of supported formats
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

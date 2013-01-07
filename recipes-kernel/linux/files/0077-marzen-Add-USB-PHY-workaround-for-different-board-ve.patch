@@ -1,0 +1,65 @@
+From 9f8dbe9c90824f6d60817d134d6bf81abe1661df Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Mon, 19 Nov 2012 14:34:18 +0000
+Subject: [PATCH 077/106] marzen: Add USB-PHY workaround for different board
+ versions
+
+Based on work by Kouei Abe <kouei.abe.cp@rms.renesas.com>
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ arch/arm/mach-shmobile/Kconfig        |   17 +++++++++++++++++
+ arch/arm/mach-shmobile/board-marzen.c |    9 +++++++++
+ 2 files changed, 26 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-shmobile/Kconfig b/arch/arm/mach-shmobile/Kconfig
+index 34560ca..4062c97 100644
+--- a/arch/arm/mach-shmobile/Kconfig
++++ b/arch/arm/mach-shmobile/Kconfig
+@@ -98,6 +98,23 @@ config MACH_MARZEN
+ 	depends on ARCH_R8A7779
+ 	select ARCH_REQUIRE_GPIOLIB
+ 
++choice
++	prompt "USB-PHY workaround"
++	depends on MACH_MARZEN
++	default USB_PHY_MARZEN_010S
++
++	config USB_PHY_MARZEN_010S
++	       bool "for Marzen R0P7779A00010S"
++	       help
++	         Use USB-PHY workaround Marzen board R0P7779A00010S.
++
++	config USB_PHY_MARZEN_110S
++	       bool "for Marzen R0P7779A00110S"
++	       help
++	         Use USB-PHY workaround Marzen board R0P7779A00110S.
++
++endchoice
++
+ comment "SH-Mobile System Configuration"
+ 
+ config CPU_HAS_INTEVT
+diff --git a/arch/arm/mach-shmobile/board-marzen.c b/arch/arm/mach-shmobile/board-marzen.c
+index b6538c3..ef4ff56 100644
+--- a/arch/arm/mach-shmobile/board-marzen.c
++++ b/arch/arm/mach-shmobile/board-marzen.c
+@@ -393,6 +393,15 @@ static int __init rcar_usbh_start(void)
+ 	iowrite32((USBPCTRL1_PLLENB | USBPCTRL1_PHYENB),
+ 		(usb_base + USBPCTRL1));
+ 
++	/* work around of USB-PHY */
++#ifdef CONFIG_USB_PHY_MARZEN_010S
++	iowrite32(0x10700040, (usb_base + 0x0850));
++	iowrite32(0x00007700, (usb_base + 0x085C));
++#elif defined CONFIG_USB_PHY_MARZEN_110S
++	iowrite32(0x10B00040, (usb_base + 0x0850));
++	iowrite32(0x00007700, (usb_base + 0x085C));
++#endif
++
+ 	/* check status */
+ 	timeout = 100; /* about 100ms */
+ 	do {
+-- 
+1.7.5.4
+

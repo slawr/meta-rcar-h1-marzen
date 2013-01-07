@@ -1,7 +1,7 @@
-From dddcd0d257575758ec9998ff35bb98ba186236cb Mon Sep 17 00:00:00 2001
+From 7b6dcc72ffaf6d0e4be246286116ddf7f605e660 Mon Sep 17 00:00:00 2001
 From: Guennadi Liakhovetski <g.liakhovetski@gmx.de>
 Date: Wed, 18 Apr 2012 03:59:58 -0300
-Subject: [PATCH 21/76] [media] V4L: fix a compiler warning
+Subject: [PATCH 021/106] [media] V4L: fix a compiler warning
 
 Fix the warning:
 
@@ -13,6 +13,7 @@ linux-2.6/include/media/v4l2-ctrls.h:505: warning: 'struct file' declared inside
 Signed-off-by: Guennadi Liakhovetski <g.liakhovetski@gmx.de>
 Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  include/media/v4l2-ctrls.h |    1 +
  1 files changed, 1 insertions(+), 0 deletions(-)

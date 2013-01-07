@@ -1,7 +1,7 @@
-From df5cee1dbd2e497d0eadf7a73ee7ff18e3c96d90 Mon Sep 17 00:00:00 2001
+From d244a86b7bc5f8055d86887aa17a366f026515b5 Mon Sep 17 00:00:00 2001
 From: Mel Gorman <mgorman@suse.de>
 Date: Mon, 25 Apr 2011 21:36:42 +0000
-Subject: [PATCH 10/76] mm: Serialize access to min_free_kbytes
+Subject: [PATCH 010/106] mm: Serialize access to min_free_kbytes
 
 There is a race between the min_free_kbytes sysctl, memory hotplug
 and transparent hugepage support enablement.  Memory hotplug uses a
@@ -13,12 +13,13 @@ Signed-off-by: Mel Gorman <mgorman@suse.de>
 Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Reviewed-by: KAMEZAWA Hiroyuki <kamezawa.hiroyu@jp.fujitsu.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  mm/page_alloc.c |   23 +++++++++++++++--------
  1 files changed, 15 insertions(+), 8 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 116c087..8be37bc 100644
+index 300bc97..3f83fe0 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -5020,14 +5020,7 @@ static void setup_per_zone_lowmem_reserve(void)

@@ -1,7 +1,7 @@
-From 618f7e84843008211f5f868ea1d0d51c26b6499e Mon Sep 17 00:00:00 2001
+From cee002245475cd8d1625c1f7c7ed84dc98ba14ef Mon Sep 17 00:00:00 2001
 From: Marek Szyprowski <m.szyprowski@samsung.com>
 Date: Wed, 25 Jan 2012 12:09:52 +0100
-Subject: [PATCH 11/76] mm: extract reclaim code from
+Subject: [PATCH 011/106] mm: extract reclaim code from
  __alloc_pages_direct_reclaim()
 
 This patch extracts common reclaim code from __alloc_pages_direct_reclaim()
@@ -17,12 +17,13 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  mm/page_alloc.c |   30 +++++++++++++++++++++---------
  1 files changed, 21 insertions(+), 9 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 8be37bc..4615531 100644
+index 3f83fe0..f7b030c 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -2130,16 +2130,13 @@ __alloc_pages_direct_compact(gfp_t gfp_mask, unsigned int order,

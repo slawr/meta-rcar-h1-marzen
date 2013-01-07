@@ -1,8 +1,10 @@
-From dd706eed105790966ed277f59749fd5a1c8c12fa Mon Sep 17 00:00:00 2001
+From ee3f1c4afdba279a414967dc441db3c846614e18 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 18 Oct 2012 15:59:35 +0100
-Subject: [PATCH 74/76] sata: Add Renesas R-Car SATA driver
+Subject: [PATCH 074/106] sata: Add Renesas R-Car SATA driver
 
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  drivers/ata/Kconfig     |   16 +
  drivers/ata/Makefile    |    1 +

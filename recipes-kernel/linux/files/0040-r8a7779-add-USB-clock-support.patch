@@ -1,7 +1,7 @@
-From bb99feecd047e502f5aabc2b86d0917062335761 Mon Sep 17 00:00:00 2001
+From 986a2d6d53da05882bce888ad7b0aedfee062813 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Wed, 11 Jul 2012 16:56:43 +0100
-Subject: [PATCH 40/76] r8a7779: add USB clock support
+Subject: [PATCH 040/106] r8a7779: add USB clock support
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

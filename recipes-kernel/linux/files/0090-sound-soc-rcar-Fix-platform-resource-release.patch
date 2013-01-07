@@ -1,0 +1,29 @@
+From 064c2eec4f66b2a9d8a6812968764d2f746cf5b2 Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Mon, 19 Nov 2012 15:28:01 +0000
+Subject: [PATCH 090/106] sound: soc: rcar: Fix platform resource release
+
+Based on work by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ sound/soc/rcar/sru_pcm.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/sound/soc/rcar/sru_pcm.c b/sound/soc/rcar/sru_pcm.c
+index 202fd8e..d6308ce 100644
+--- a/sound/soc/rcar/sru_pcm.c
++++ b/sound/soc/rcar/sru_pcm.c
+@@ -815,6 +815,9 @@ static int sru_remove(struct platform_device *pdev)
+ {
+ 	FNC_ENTRY
+ 
++	snd_soc_unregister_dais(&pdev->dev, ARRAY_SIZE(sru_soc_dai));
++	snd_soc_unregister_platform(&pdev->dev);
++
+ 	clk_disable(ssi0_clk);
+ 	clk_disable(ssi1_clk);
+ 	clk_disable(sru_clk);
+-- 
+1.7.5.4
+

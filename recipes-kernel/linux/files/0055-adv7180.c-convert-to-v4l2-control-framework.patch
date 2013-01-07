@@ -1,7 +1,7 @@
-From a90fb3a75451c715352db2745c4680145e9df6c4 Mon Sep 17 00:00:00 2001
+From ba67ea50012f4a1e10bc8680143f0f122f8c23f2 Mon Sep 17 00:00:00 2001
 From: Federico Vaga <federico.vaga@gmail.com>
 Date: Wed, 11 Jul 2012 11:29:33 -0300
-Subject: [PATCH 55/76] adv7180.c: convert to v4l2 control framework
+Subject: [PATCH 055/106] adv7180.c: convert to v4l2 control framework
 
 [mchehab@redhat.com: fix checkpatch.pl ERROR:
  Macros with complex values should be enclosed in parenthesis]

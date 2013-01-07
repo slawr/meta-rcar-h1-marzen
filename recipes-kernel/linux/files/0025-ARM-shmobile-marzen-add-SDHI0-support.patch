@@ -1,7 +1,7 @@
-From a1c5b7f426936660bec0ef11eab5e992292b66c2 Mon Sep 17 00:00:00 2001
+From 78ac55b0e1a05c4ac91d6128e8f0e585434f0f09 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Mon, 6 Aug 2012 13:31:05 +0100
-Subject: [PATCH 25/76] ARM: shmobile: marzen: add SDHI0 support
+Subject: [PATCH 025/106] ARM: shmobile: marzen: add SDHI0 support
 
 (minor change to work on v3.4)
 [horms@verge.net.au: moved defconfig portion into a separate patch]

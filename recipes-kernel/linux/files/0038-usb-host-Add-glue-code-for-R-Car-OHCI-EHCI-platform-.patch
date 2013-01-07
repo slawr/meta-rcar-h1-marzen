@@ -1,8 +1,8 @@
-From dd9717dd9b273537c547d1ac3361d156550ae563 Mon Sep 17 00:00:00 2001
+From 9f67c03f8f01ee6496a0e5c86a68942d7fdf6322 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 28 Jun 2012 15:09:35 +0100
-Subject: [PATCH 38/76] usb: host: Add glue code for R-Car OHCI/EHCI platform
- drivers on r8a7779
+Subject: [PATCH 038/106] usb: host: Add glue code for R-Car OHCI/EHCI
+ platform drivers on r8a7779
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
@@ -32,10 +32,10 @@ index 76316a3..f2d8b0b 100644
  
  # some non-PCI HCDs implement xHCI
 diff --git a/drivers/usb/host/ehci-hcd.c b/drivers/usb/host/ehci-hcd.c
-index 4a3bc5b..ab2044a 100644
+index bb73df6..c1d4911 100644
 --- a/drivers/usb/host/ehci-hcd.c
 +++ b/drivers/usb/host/ehci-hcd.c
-@@ -1383,6 +1383,11 @@ MODULE_LICENSE ("GPL");
+@@ -1385,6 +1385,11 @@ MODULE_LICENSE ("GPL");
  #define PLATFORM_DRIVER		ehci_platform_driver
  #endif
  

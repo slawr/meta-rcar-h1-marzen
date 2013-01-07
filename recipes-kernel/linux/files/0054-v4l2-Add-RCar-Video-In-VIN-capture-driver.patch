@@ -1,7 +1,7 @@
-From 4fb0e45f9bb2dadf06610c9e941244ee8aa768ec Mon Sep 17 00:00:00 2001
+From dc72f14a29c66a005d6327376b32c4c10aa9a4fa Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 31 May 2012 21:29:03 +0100
-Subject: [PATCH 54/76] v4l2: Add RCar Video In (VIN) capture driver
+Subject: [PATCH 054/106] v4l2: Add RCar Video In (VIN) capture driver
 
 The VIN hardware requires the use of continuous capture mode when
 capturing progressive video. This mode requires three buffers to

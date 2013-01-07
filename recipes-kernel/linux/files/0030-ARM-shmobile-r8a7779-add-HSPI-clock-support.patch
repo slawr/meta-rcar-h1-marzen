@@ -1,9 +1,10 @@
-From 66d4dc72b585e92ebfae5228e619d149ac98e7b0 Mon Sep 17 00:00:00 2001
+From 9623123d408d9749deff4e6a378c7eb174000d1e Mon Sep 17 00:00:00 2001
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Date: Wed, 10 Oct 2012 19:56:33 -0700
-Subject: [PATCH 30/76] ARM: shmobile: r8a7779: add HSPI clock support
+Subject: [PATCH 030/106] ARM: shmobile: r8a7779: add HSPI clock support
 
 Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/mach-shmobile/clock-r8a7779.c |    5 +++++
  1 files changed, 5 insertions(+), 0 deletions(-)

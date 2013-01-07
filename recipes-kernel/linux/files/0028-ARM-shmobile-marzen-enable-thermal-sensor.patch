@@ -1,13 +1,14 @@
-From b02f88bb9922e1e5ebc955e774823ea39c9752aa Mon Sep 17 00:00:00 2001
+From eddad0bebcb4745b5dd4022a441c6b5a0e886adf Mon Sep 17 00:00:00 2001
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Date: Mon, 27 Aug 2012 19:00:15 -0700
-Subject: [PATCH 28/76] ARM: shmobile: marzen: enable thermal sensor
+Subject: [PATCH 028/106] ARM: shmobile: marzen: enable thermal sensor
 
 Marzen board can measure its thermal by this patch.
 	cat /sys/class/thermal/thermal_zoneX/temp
 
 Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Signed-off-by: Simon Horman <horms@verge.net.au>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/configs/marzen_defconfig     |    2 ++
  arch/arm/mach-shmobile/board-marzen.c |   16 ++++++++++++++++

@@ -1,7 +1,7 @@
-From 572dc8be6953620e78886902ea6556ccd5527d5a Mon Sep 17 00:00:00 2001
+From 540742efaa714844ea4d401dd19cb4d2f2b9f389 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Tue, 10 Jul 2012 08:43:55 +0100
-Subject: [PATCH 49/76] sound: soc: add glue for marzen/ak4643 sound card
+Subject: [PATCH 049/106] sound: soc: add glue for marzen/ak4643 sound card
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

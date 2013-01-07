@@ -1,7 +1,7 @@
-From ef341286bc8c092a59b0bb17d896ae76a3d130c3 Mon Sep 17 00:00:00 2001
+From 7149975ece05088aa9c5ded41ca2d3a79bfc4b6c Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 12 Jul 2012 16:21:37 +0100
-Subject: [PATCH 45/76] marzen: add dma support for SDHI0
+Subject: [PATCH 045/106] marzen: add dma support for SDHI0
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

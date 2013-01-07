@@ -1,8 +1,10 @@
-From 77dccc7bc1574f94e352a376afcfba1777aeb882 Mon Sep 17 00:00:00 2001
+From 2c795008c9159683eea4c4bd9e8478db5f3dd369 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Tue, 23 Oct 2012 10:38:50 +0100
-Subject: [PATCH 76/76] marzen: Add SATA
+Subject: [PATCH 076/106] marzen: Add SATA
 
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/configs/marzen_defconfig     |    3 +++
  arch/arm/mach-shmobile/board-marzen.c |   24 ++++++++++++++++++++++++

@@ -1,7 +1,7 @@
-From 651f2fb03f933849c63a6f31ee4e12e221fa6132 Mon Sep 17 00:00:00 2001
+From 29cae4bd2942f77227f7f48923d2a64ee935da51 Mon Sep 17 00:00:00 2001
 From: Katsuya Matsubara <matsu@igel.co.jp>
 Date: Thu, 31 May 2012 12:36:42 +0900
-Subject: [PATCH 66/76] soc_camera: add 12/18/24 bits data width
+Subject: [PATCH 066/106] soc_camera: add 12/18/24 bits data width
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

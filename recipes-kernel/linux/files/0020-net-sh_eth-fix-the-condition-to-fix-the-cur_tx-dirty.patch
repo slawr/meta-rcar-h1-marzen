@@ -1,7 +1,7 @@
-From 23ff40585633ed259620e795f8eb8e071bba04ae Mon Sep 17 00:00:00 2001
+From dccd6b7f3bda8c9a9d2bc488071344d56621f019 Mon Sep 17 00:00:00 2001
 From: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Date: Wed, 20 Jun 2012 15:26:34 +0000
-Subject: [PATCH 20/76] net: sh_eth: fix the condition to fix the
+Subject: [PATCH 020/106] net: sh_eth: fix the condition to fix the
  cur_tx/dirty_rx
 
 The following commit couldn't work if the RMCR is not set to 1.
@@ -17,6 +17,7 @@ receive descriptors are empty.
 Signed-off-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Tested-by: Guennadi Liakhovetski <g.liakhovetski@gmx.de>
 Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  drivers/net/ethernet/renesas/sh_eth.c |   12 +++++++-----
  1 files changed, 7 insertions(+), 5 deletions(-)

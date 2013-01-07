@@ -1,0 +1,91 @@
+From af710da824e59b9b19ae2560dc0071dcb327c224 Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Mon, 19 Nov 2012 15:18:28 +0000
+Subject: [PATCH 088/106] sound: soc: rcar: Fix hwdep ioctl
+
+Based on work by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ include/sound/rcar.h     |   19 +++++++++----------
+ sound/soc/rcar/sru_pcm.c |   18 +++++++++++++++---
+ 2 files changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/include/sound/rcar.h b/include/sound/rcar.h
+index 16f13c2..65e5b24 100644
+--- a/include/sound/rcar.h
++++ b/include/sound/rcar.h
+@@ -55,18 +55,17 @@ struct rcar_codec_ctrl {
+ #define rcar_codec_ctrl_t	struct rcar_codec_ctrl
+ 
+ struct rcar_pcm_ctrl {
+-	rcar_ssi_ctrl_t		ssi0;		/* not use */
+-	rcar_ssi_ctrl_t		ssi1;		/* not use */
++	rcar_ssi_ctrl_t		ssi0;
++	rcar_ssi_ctrl_t		ssi1;
+ 	rcar_ssi_ctrl_t		ssi2;		/* not use */
+-	rcar_ssi_ctrl_t		ssi3;
+-	rcar_ssi_ctrl_t		ssi4;
+-	rcar_ssi_ctrl_t		ssi5;
+-	rcar_ssi_ctrl_t		ssi6;
+-	rcar_ssi_ctrl_t		ssi7;
+-	rcar_ssi_ctrl_t		ssi8;
++	rcar_ssi_ctrl_t		ssi3;		/* not use */
++	rcar_ssi_ctrl_t		ssi4;		/* not use */
++	rcar_ssi_ctrl_t		ssi5;		/* not use */
++	rcar_ssi_ctrl_t		ssi6;		/* not use */
++	rcar_ssi_ctrl_t		ssi7;		/* not use */
++	rcar_ssi_ctrl_t		ssi8;		/* not use */
++	rcar_ssi_ctrl_t		ssi9;		/* not use */
+ 	rcar_codec_ctrl_t	codec1;		/* AK4643 */
+-	rcar_codec_ctrl_t	codec2;		/* AK4554 */
+-	rcar_codec_ctrl_t	codec3;		/* AK4554 */
+ };
+ #define rcar_pcm_ctrl_t	struct rcar_pcm_ctrl
+ 
+diff --git a/sound/soc/rcar/sru_pcm.c b/sound/soc/rcar/sru_pcm.c
+index b53d082..7738e54 100644
+--- a/sound/soc/rcar/sru_pcm.c
++++ b/sound/soc/rcar/sru_pcm.c
+@@ -51,6 +51,20 @@ static void __iomem *adg_io;
+ 
+ static u64 dma_mask = DMA_BIT_MASK(32);
+ 
++static struct rcar_pcm_ctrl rcar_pcm_hwdep = {
++	.ssi0.m_s = SSI_MODE_MASTER,
++	.ssi1.m_s = SSI_MODE_SLAVE,
++	.ssi2.m_s = 0,
++	.ssi3.m_s = 0,
++	.ssi4.m_s = 0,
++	.ssi5.m_s = 0,
++	.ssi6.m_s = 0,
++	.ssi7.m_s = 0,
++	.ssi8.m_s = 0,
++	.ssi9.m_s = 0,
++	.codec1.m_s = CODEC_MODE_SLAVE,
++};
++
+ /************************************************************************
+ 
+ 	callback functions for snd_hwdep_ops structure
+@@ -81,8 +95,6 @@ static int sru_pcm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
+ 		if (ret != 0)
+ 			return -EFAULT;
+ 
+-		*info = pset;
+-
+ 		/* If you want to set to Hardware Dependant Interface,
+ 		please implement here. (SSI & CODEC) */
+ 
+@@ -114,7 +126,7 @@ int sru_pcm_hwdep_new(struct snd_card *card, char *id)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	hw->private_data = NULL;
++	hw->private_data = &rcar_pcm_hwdep;
+ 	hw->ops.open     = sru_pcm_hwdep_open;
+ 	hw->ops.ioctl    = sru_pcm_hwdep_ioctl;
+ 	hw->ops.release  = sru_pcm_hwdep_release;
+-- 
+1.7.5.4
+

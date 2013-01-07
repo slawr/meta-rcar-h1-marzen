@@ -1,11 +1,12 @@
-From 624ed6e43d80ed14cfe337c69fca874bec9ed5a2 Mon Sep 17 00:00:00 2001
+From 53d4950ffa9bb2f17257181e2a059094fecaee0a Mon Sep 17 00:00:00 2001
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Date: Wed, 10 Oct 2012 19:56:51 -0700
-Subject: [PATCH 32/76] ARM: shmobile: r8a7779: add I2C driver support
+Subject: [PATCH 032/106] ARM: shmobile: r8a7779: add I2C driver support
 
 This patch enable R-Car I2C driver
 
 Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/configs/marzen_defconfig      |    2 +
  arch/arm/mach-shmobile/setup-r8a7779.c |   77 ++++++++++++++++++++++++++++++++

@@ -1,7 +1,7 @@
-From 630a8f1eb2458f4b14add02dac7818d699f82ab1 Mon Sep 17 00:00:00 2001
+From ef662302651efa69c3bd3fc1768f0cc5c3a810c2 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Wed, 4 Jul 2012 15:25:27 +0100
-Subject: [PATCH 46/76] r8a7779: add SSI, SRU clock support
+Subject: [PATCH 046/106] r8a7779: add SSI, SRU clock support
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

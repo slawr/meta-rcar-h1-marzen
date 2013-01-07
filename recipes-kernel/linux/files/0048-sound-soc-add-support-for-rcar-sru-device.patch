@@ -1,7 +1,7 @@
-From a207d103b2a18b0ee56c1ab8a4d4e13a4a6feff7 Mon Sep 17 00:00:00 2001
+From dfcb7c59e0f2990d1e98c946f75fee1cacab2450 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Tue, 10 Jul 2012 10:03:56 +0100
-Subject: [PATCH 48/76] sound: soc: add support for rcar sru device
+Subject: [PATCH 048/106] sound: soc: add support for rcar sru device
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

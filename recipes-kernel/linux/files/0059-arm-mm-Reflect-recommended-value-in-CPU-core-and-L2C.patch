@@ -1,7 +1,7 @@
-From 8352bd87435ff986b3322a21c16524b6a0f6a693 Mon Sep 17 00:00:00 2001
+From cf6eae065f89ed3b1d3ace1211df311c5618630c Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 12 Jul 2012 15:26:19 +0100
-Subject: [PATCH 59/76] arm: mm: Reflect recommended value in CPU core and
+Subject: [PATCH 059/106] arm: mm: Reflect recommended value in CPU core and
  L2Cache
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>

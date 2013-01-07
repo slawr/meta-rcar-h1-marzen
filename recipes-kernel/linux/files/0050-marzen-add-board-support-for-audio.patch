@@ -1,7 +1,7 @@
-From 385b9f711c07cd1944e6616050453113fc0298dc Mon Sep 17 00:00:00 2001
+From cc7c0fd691da93766c21092eedc5757a09f2dfa7 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 12 Jul 2012 10:46:09 +0100
-Subject: [PATCH 50/76] marzen: add board support for audio
+Subject: [PATCH 050/106] marzen: add board support for audio
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

@@ -1,7 +1,7 @@
-From 5e114ce7b05625d4e9d852fb8dfd9108f2fb6de4 Mon Sep 17 00:00:00 2001
+From 1f65f920fecf7d79e4e934edba50ec79dd522f47 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Fri, 6 Jul 2012 11:19:18 +0100
-Subject: [PATCH 44/76] r8a7779: Add platform support for R-Car HPB DMAC
+Subject: [PATCH 044/106] r8a7779: Add platform support for R-Car HPB DMAC
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
@@ -11,7 +11,7 @@ Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
  3 files changed, 150 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-shmobile/include/mach/irqs.h b/arch/arm/mach-shmobile/include/mach/irqs.h
-index a4ca462..9657c97 100644
+index a4ca4625e..9657c97 100644
 --- a/arch/arm/mach-shmobile/include/mach/irqs.h
 +++ b/arch/arm/mach-shmobile/include/mach/irqs.h
 @@ -15,6 +15,7 @@

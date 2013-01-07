@@ -1,0 +1,28 @@
+From f753a3f7e7087e9cfd5c6b7bf5de51961eae7a78 Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Tue, 20 Nov 2012 15:10:06 +0000
+Subject: [PATCH 096/106] marzen: Setup pinmux for USB2 (on CN22)
+
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ arch/arm/mach-shmobile/board-marzen.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-shmobile/board-marzen.c b/arch/arm/mach-shmobile/board-marzen.c
+index eb9e2ad..041396d 100644
+--- a/arch/arm/mach-shmobile/board-marzen.c
++++ b/arch/arm/mach-shmobile/board-marzen.c
+@@ -747,6 +747,9 @@ static void __init marzen_init(void)
+ 	gpio_request(GPIO_FN_USB_OVC1, NULL);
+ 	gpio_request(GPIO_FN_USB_OVC2, NULL);
+ 
++	/* USB (CN22) */
++	gpio_request(GPIO_FN_USB_PENC2, NULL);
++
+ 	/* Display Unit 0 (CN10: ARGB0) */
+ 	gpio_request(GPIO_FN_DU0_DR7, NULL);
+ 	gpio_request(GPIO_FN_DU0_DR6, NULL);
+-- 
+1.7.5.4
+

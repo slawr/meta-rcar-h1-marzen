@@ -1,17 +1,18 @@
-From b0a5f352c7a4f787239361b5b2a22f5e7ecd4d65 Mon Sep 17 00:00:00 2001
+From 05eebddb36811bd618316d22d35c461646ca959e Mon Sep 17 00:00:00 2001
 From: Michal Nazarewicz <mina86@mina86.com>
 Date: Wed, 11 Jan 2012 15:16:11 +0100
-Subject: [PATCH 01/76] mm: page_alloc: remove trailing whitespace
+Subject: [PATCH 001/106] mm: page_alloc: remove trailing whitespace
 
 Signed-off-by: Michal Nazarewicz <mina86@mina86.com>
 Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Acked-by: Mel Gorman <mel@csn.ul.ie>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  mm/page_alloc.c |   14 +++++++-------
  1 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 918330f..6fb46c1 100644
+index 88a6d87..539a535 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -513,10 +513,10 @@ static inline int page_is_buddy(struct page *page, struct page *buddy,

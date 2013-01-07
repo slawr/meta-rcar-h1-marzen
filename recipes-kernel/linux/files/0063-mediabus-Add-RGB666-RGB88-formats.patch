@@ -1,7 +1,7 @@
-From 9783d724930ab0542732cce0aed79150a07ead7f Mon Sep 17 00:00:00 2001
+From bf19305951116fc05cf9a41a3be396673ae5619c Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Mon, 8 Oct 2012 12:41:57 +0100
-Subject: [PATCH 63/76] mediabus: Add RGB666 & RGB88 formats
+Subject: [PATCH 063/106] mediabus: Add RGB666 & RGB88 formats
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

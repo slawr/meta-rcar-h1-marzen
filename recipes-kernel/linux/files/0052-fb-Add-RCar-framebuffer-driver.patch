@@ -1,7 +1,7 @@
-From 1f63cbe6da4252fbfa4f2310ed64cea9f3b6a787 Mon Sep 17 00:00:00 2001
+From 066cbd379d785df2b2727dcf4f79b63d229e7c3e Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 31 May 2012 21:25:16 +0100
-Subject: [PATCH 52/76] fb: Add RCar framebuffer driver
+Subject: [PATCH 052/106] fb: Add RCar framebuffer driver
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

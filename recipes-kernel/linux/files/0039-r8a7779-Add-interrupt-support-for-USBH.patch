@@ -1,7 +1,7 @@
-From f662276dd055f969fe2d5facd9232d3efddf398c Mon Sep 17 00:00:00 2001
+From 72a60f5a6f6474ea61fd51892c62e922bf11d3d0 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 12 Jul 2012 10:27:50 +0100
-Subject: [PATCH 39/76] r8a7779: Add interrupt support for USBH
+Subject: [PATCH 039/106] r8a7779: Add interrupt support for USBH
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
  2 files changed, 31 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-shmobile/include/mach/irqs.h b/arch/arm/mach-shmobile/include/mach/irqs.h
-index 4e686cc2..a4ca462 100644
+index 4e686cc2..a4ca4625e 100644
 --- a/arch/arm/mach-shmobile/include/mach/irqs.h
 +++ b/arch/arm/mach-shmobile/include/mach/irqs.h
 @@ -11,4 +11,10 @@

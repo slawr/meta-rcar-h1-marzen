@@ -1,7 +1,7 @@
-From b9333b3abaa4b7e88ce1b293e51c978acc3052ba Mon Sep 17 00:00:00 2001
+From 7c852a00b637654f539dccc7fc375d0706394934 Mon Sep 17 00:00:00 2001
 From: Michal Nazarewicz <mina86@mina86.com>
 Date: Tue, 3 Apr 2012 15:06:15 +0200
-Subject: [PATCH 09/76] mm: page_isolation: MIGRATE_CMA isolation functions
+Subject: [PATCH 009/106] mm: page_isolation: MIGRATE_CMA isolation functions
  added
 
 This commit changes various functions that change pages and
@@ -17,6 +17,7 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  include/linux/gfp.h            |    3 ++-
  include/linux/page-isolation.h |   18 +++++++++---------
@@ -90,10 +91,10 @@ index 051c1b1..3bdcab3 100644
  
  #endif
 diff --git a/mm/memory-failure.c b/mm/memory-failure.c
-index 97cc273..c99ad4e 100644
+index d86fb20..b68c8f6 100644
 --- a/mm/memory-failure.c
 +++ b/mm/memory-failure.c
-@@ -1404,7 +1404,7 @@ static int get_any_page(struct page *p, unsigned long pfn, int flags)
+@@ -1406,7 +1406,7 @@ static int get_any_page(struct page *p, unsigned long pfn, int flags)
  		/* Not a free page */
  		ret = 1;
  	}
@@ -103,10 +104,10 @@ index 97cc273..c99ad4e 100644
  	return ret;
  }
 diff --git a/mm/memory_hotplug.c b/mm/memory_hotplug.c
-index 6629faf..fc898cb 100644
+index 9ad7d1e..77ad306 100644
 --- a/mm/memory_hotplug.c
 +++ b/mm/memory_hotplug.c
-@@ -891,7 +891,7 @@ static int __ref offline_pages(unsigned long start_pfn,
+@@ -895,7 +895,7 @@ static int __ref offline_pages(unsigned long start_pfn,
  	nr_pages = end_pfn - start_pfn;
  
  	/* set above range as isolated */
@@ -115,7 +116,7 @@ index 6629faf..fc898cb 100644
  	if (ret)
  		goto out;
  
-@@ -956,7 +956,7 @@ repeat:
+@@ -960,7 +960,7 @@ repeat:
  	   We cannot do rollback at this point. */
  	offline_isolated_pages(start_pfn, end_pfn);
  	/* reset pagetype flags and makes migrate type to be MOVABLE */
@@ -124,7 +125,7 @@ index 6629faf..fc898cb 100644
  	/* removal success */
  	zone->present_pages -= offlined_pages;
  	zone->zone_pgdat->node_present_pages -= offlined_pages;
-@@ -981,7 +981,7 @@ failed_removal:
+@@ -985,7 +985,7 @@ failed_removal:
  		start_pfn, end_pfn);
  	memory_notify(MEM_CANCEL_OFFLINE, &arg);
  	/* pushback to free area */
@@ -134,7 +135,7 @@ index 6629faf..fc898cb 100644
  out:
  	unlock_memory_hotplug();
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 0869eb1..116c087 100644
+index 205897d..300bc97 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -5582,7 +5582,7 @@ out:

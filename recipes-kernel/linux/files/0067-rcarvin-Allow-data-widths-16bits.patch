@@ -1,7 +1,7 @@
-From 842fba14c484be87182a0e056d8d88c76d457be1 Mon Sep 17 00:00:00 2001
+From 3e89a53bb70ed458fdbbb2fe9c89ca7f7d7d8409 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Wed, 26 Sep 2012 16:07:55 +0100
-Subject: [PATCH 67/76] rcarvin: Allow data widths > 16bits
+Subject: [PATCH 067/106] rcarvin: Allow data widths > 16bits
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

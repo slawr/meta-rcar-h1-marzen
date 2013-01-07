@@ -1,7 +1,7 @@
-From 97f9f655069392391883f527d23c54840b6c170b Mon Sep 17 00:00:00 2001
+From 1ca7749e6653ff249627987f05baa9239dbe040c Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Fri, 10 Aug 2012 10:30:43 +0100
-Subject: [PATCH 56/76] v4l2: adv7180: SoC camera support (BT.656)
+Subject: [PATCH 056/106] v4l2: adv7180: SoC camera support (BT.656)
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

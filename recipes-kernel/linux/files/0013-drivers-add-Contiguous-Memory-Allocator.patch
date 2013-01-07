@@ -1,7 +1,7 @@
-From 0d0ec83eb8d79f4a95558d5aa29ef812295f6d7b Mon Sep 17 00:00:00 2001
+From 88eace9a6a369f3057ff4ad1507da584bd9c2ca4 Mon Sep 17 00:00:00 2001
 From: Marek Szyprowski <m.szyprowski@samsung.com>
 Date: Thu, 29 Dec 2011 13:09:51 +0100
-Subject: [PATCH 13/76] drivers: add Contiguous Memory Allocator
+Subject: [PATCH 013/106] drivers: add Contiguous Memory Allocator
 
 The Contiguous Memory Allocator is a set of helper functions for DMA
 mapping framework that improves allocations of contiguous memory chunks.
@@ -26,6 +26,7 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  Documentation/kernel-parameters.txt  |    5 +
  arch/Kconfig                         |    3 +

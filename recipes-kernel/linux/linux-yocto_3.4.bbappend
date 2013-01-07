@@ -12,10 +12,11 @@ KMACHINE_rcar-h1-marzen  = "rcar-h1-marzen"
 
 KERNEL_FEATURES_append_rcar-h1-marzen += " cfg/smp.scc"
 
-LINUX_VERSION = "3.4.15"
+LINUX_VERSION = "3.4.23"
 
-# Greg's 3.4.15 tag
-SRCREV = "553f672df76c6213b9a7e644b1d878204a61e013"
+# Greg's 3.4.23 tag
+SRCREV = "9fa52906a2e2d6de4f95ee6df185759ee70b59c6"
+
 
 SRC_URI += " \
 	file://rcar-h1-marzen-standard.scc \
@@ -100,6 +101,36 @@ SRC_URI += " \
 	file://0074-sata-Add-Renesas-R-Car-SATA-driver.patch \
 	file://0075-arm-shmobile-r8a7779-Add-SATA-clock.patch \
 	file://0076-marzen-Add-SATA.patch \
+	file://0077-marzen-Add-USB-PHY-workaround-for-different-board-ve.patch \
+	file://0078-ARM-shmobile-r8a7779-Fix-HPB-DMAC-42-IRQ.patch \
+	file://0079-ARM-shmobile-r8a7779-Add-drive-abilities-for-SD-pins.patch \
+	file://0080-ARM-shmobile-Fix-dmaengine-module-support.patch \
+	file://0081-dma-hpb-dmae-Fix-error-handling-in-hpb_dmae_alloc_ch.patch \
+	file://0082-dma-hbp-dmae-Remove-verbose-function.patch \
+	file://0083-dma-hpb-dmae-Remove-verbose-return-value.patch \
+	file://0084-dma-hpb-dmae-Remove-useless-code.patch \
+	file://0085-dma-hpb-dmae-Add-SuperHyway-Port-selector.patch \
+	file://0086-video-rcarfb-Fix-error-code-in-set-color-register-fu.patch \
+	file://0087-video-rcarfb-Add-ability-to-set-resolution-on-the-cm.patch \
+	file://0088-sound-soc-rcar-Fix-hwdep-ioctl.patch \
+	file://0089-sound-soc-rcar-Remove-monaural-and-fix-not-use-mutex.patch \
+	file://0090-sound-soc-rcar-Fix-platform-resource-release.patch \
+	file://0091-sound-soc-rcar-Fix-DMA-channel-request-error.patch \
+	file://0092-sound-soc-rcar-Remove-invalid-comment.patch \
+	file://0093-serial-sh-sci-Fix-overrun-error-handling.patch \
+	file://0094-ARM-shmobile-r8a7779-PFC-rename-PENCx-USB_PENCx.patch \
+	file://0095-ARM-shmobile-r8a7779-Fix-PFC-MOD_SEL2-missed-an-entr.patch \
+	file://0096-marzen-Setup-pinmux-for-USB2-on-CN22.patch \
+	file://0097-marzen-defconfig-Add-SPI-user-mode.patch \
+	file://0098-marzen-Add-HSPI2B-for-SPI-Flash.patch \
+	file://0099-marzen-Register-spidev-devices.patch \
+	file://0100-spi-sh-hspi-add-CS-manual-control-support.patch \
+	file://0101-spi-sh-hspi-Improve-performance.patch \
+	file://0102-ARM-shmobile-r8a7779-Set-the-SGX-clock-to-clks.patch \
+	file://0103-marzen-Set-config-options-to-improve-LTP-results.patch \
+	file://0104-ARM-shmobile-r8a7779-Enable-PMU-Performance-Monitori.patch \
+	file://0105-SGX-Check-CMA-pool-is-entirely-in-one-DDR-bank.patch \
+	file://0106-sata-rcar-Remove-duplicate-entry-in-Kconfig.patch \
 	"
 
 # uncomment and replace these SRCREVs with the real commit ids once you've had

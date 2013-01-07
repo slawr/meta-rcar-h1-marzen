@@ -1,7 +1,7 @@
-From 370890dd332ec97f463067d065fcbe691e5c862e Mon Sep 17 00:00:00 2001
+From 78026eaebb5c53983797dfaad878349e345d111b Mon Sep 17 00:00:00 2001
 From: Federico Vaga <federico.vaga@gmail.com>
 Date: Thu, 12 Apr 2012 12:39:36 -0300
-Subject: [PATCH 17/76] [media] adv7180: add support to user controls
+Subject: [PATCH 017/106] [media] adv7180: add support to user controls
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -14,6 +14,7 @@ Acked-by: Giancarlo Asnaghi <giancarlo.asnaghi@st.com>
 Cc: Alan Cox <alan@linux.intel.com>
 Cc: Richard Röjfors <richard.rojfors.ext@mocean-labs.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  drivers/media/video/adv7180.c |  417 ++++++++++++++++++++++++++++++++++-------
  1 files changed, 350 insertions(+), 67 deletions(-)

@@ -1,7 +1,7 @@
-From 2ef60c2f7b325122659859f12ae343d97475ff3d Mon Sep 17 00:00:00 2001
+From 12803e21feb2d22a1b69aac2a47e263220a1ec3c Mon Sep 17 00:00:00 2001
 From: Marek Szyprowski <m.szyprowski@samsung.com>
 Date: Thu, 29 Dec 2011 13:09:51 +0100
-Subject: [PATCH 14/76] X86: integrate CMA with DMA-mapping subsystem
+Subject: [PATCH 014/106] X86: integrate CMA with DMA-mapping subsystem
 
 This patch adds support for CMA to dma-mapping subsystem for x86
 architecture that uses common pci-dma/pci-nommu implementation. This
@@ -11,6 +11,7 @@ Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Signed-off-by: Kyungmin Park <kyungmin.park@samsung.com>
 CC: Michal Nazarewicz <mina86@mina86.com>
 Acked-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/x86/Kconfig                      |    1 +
  arch/x86/include/asm/dma-contiguous.h |   13 +++++++++++++
@@ -144,7 +145,7 @@ index f960506..871be4a 100644
  	.map_page		= nommu_map_page,
  	.sync_single_for_device = nommu_sync_single_for_device,
 diff --git a/arch/x86/kernel/setup.c b/arch/x86/kernel/setup.c
-index 1a29015..d6c956e 100644
+index ae98dbb..2b50586 100644
 --- a/arch/x86/kernel/setup.c
 +++ b/arch/x86/kernel/setup.c
 @@ -50,6 +50,7 @@
@@ -155,7 +156,7 @@ index 1a29015..d6c956e 100644
  
  #include <linux/errno.h>
  #include <linux/kernel.h>
-@@ -934,6 +935,7 @@ void __init setup_arch(char **cmdline_p)
+@@ -948,6 +949,7 @@ void __init setup_arch(char **cmdline_p)
  	}
  #endif
  	memblock.current_limit = get_max_mapped();

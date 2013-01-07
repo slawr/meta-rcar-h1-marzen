@@ -1,7 +1,7 @@
-From 729740b0ce92f4c73cf3625fd5114c31c8b703af Mon Sep 17 00:00:00 2001
+From 39c015c5281bdcc2d024c5327fef90a669537799 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Fri, 15 Jun 2012 15:26:46 +0100
-Subject: [PATCH 60/76] marzen: defconfig: Add drivers, file systems, etc
+Subject: [PATCH 060/106] marzen: defconfig: Add drivers, file systems, etc
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

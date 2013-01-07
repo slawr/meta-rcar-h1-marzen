@@ -1,13 +1,14 @@
-From d716c98157c04eb84672c2d6af1a15d0d9772b8f Mon Sep 17 00:00:00 2001
+From aeb01756318690c4ca41e5cfdfa9034b39a262df Mon Sep 17 00:00:00 2001
 From: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Date: Wed, 4 Apr 2012 18:37:10 +0000
-Subject: [PATCH 16/76] net: sh_eth: add support R8A7740
+Subject: [PATCH 016/106] net: sh_eth: add support R8A7740
 
 The R8A7740 has a Gigabit Ethernet MAC. This patch supports it.
 
 Signed-off-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Tested-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  drivers/net/ethernet/renesas/Kconfig  |    7 +-
  drivers/net/ethernet/renesas/sh_eth.c |  114 ++++++++++++++++++++++++++++++++-

@@ -1,7 +1,7 @@
-From 6397baf3e2cc4b1dde5cb7635dd27d8ba4040a9c Mon Sep 17 00:00:00 2001
+From b98ecf67be95f0ec6baef09dc4049260a65bb55c Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Tue, 10 Jul 2012 09:54:07 +0100
-Subject: [PATCH 42/76] dma: hpb-dmae: Add DMA Engine driver for R-Car HPB
+Subject: [PATCH 042/106] dma: hpb-dmae: Add DMA Engine driver for R-Car HPB
  DMAC
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>

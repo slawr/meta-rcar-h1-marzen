@@ -1,8 +1,8 @@
-From 5bf61bc009acfc5906d67a2068a706432dd5705d Mon Sep 17 00:00:00 2001
+From 9733766cb1a9e0c2b9e169bc76b5e0fcc7ebedc8 Mon Sep 17 00:00:00 2001
 From: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Date: Mon, 28 May 2012 23:07:55 +0000
-Subject: [PATCH 18/76] net: sh_eth: fix the rxdesc pointer when rx descriptor
- empty happens
+Subject: [PATCH 018/106] net: sh_eth: fix the rxdesc pointer when rx
+ descriptor empty happens
 
 When Receive Descriptor Empty happens, rxdesc pointer of the driver
 and actual next descriptor of the controller may be mismatch.
@@ -10,6 +10,7 @@ This patch fixes it.
 
 Signed-off-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  drivers/net/ethernet/renesas/sh_eth.c |    8 +++++---
  1 files changed, 5 insertions(+), 3 deletions(-)

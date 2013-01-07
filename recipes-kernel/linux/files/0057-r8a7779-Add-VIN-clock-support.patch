@@ -1,7 +1,7 @@
-From 96b9bc165b0a4c1a03bf16398802bff9c587f3ac Mon Sep 17 00:00:00 2001
+From 17c01d199364025c171c611cc977e23b49a9dffb Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 12 Jul 2012 10:58:38 +0100
-Subject: [PATCH 57/76] r8a7779: Add VIN clock support
+Subject: [PATCH 057/106] r8a7779: Add VIN clock support
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

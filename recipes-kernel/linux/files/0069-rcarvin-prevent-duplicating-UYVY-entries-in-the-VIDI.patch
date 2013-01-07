@@ -1,7 +1,7 @@
-From 06afd1189c42cb4dd3a686387d9884b459c8f7ce Mon Sep 17 00:00:00 2001
+From 15a46377eb8903530bc17834f55f5bb1ca1f17cf Mon Sep 17 00:00:00 2001
 From: Katsuya Matsubara <matsu@igel.co.jp>
 Date: Wed, 20 Jun 2012 11:54:28 +0900
-Subject: [PATCH 69/76] rcarvin: prevent duplicating UYVY entries in the
+Subject: [PATCH 069/106] rcarvin: prevent duplicating UYVY entries in the
  VIDIOC_ENUM_FMT list
 
 Duplicating UYVY entries in the VIDIOC_ENUM_FMT list could be induced

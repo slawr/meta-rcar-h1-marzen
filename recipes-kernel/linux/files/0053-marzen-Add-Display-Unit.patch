@@ -1,7 +1,7 @@
-From 10ef8f27bc6e390c3456608dc5fb1bcf0d070920 Mon Sep 17 00:00:00 2001
+From b456c75fa0c8d555cc4cca30c65a543c0d4a2c24 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Wed, 11 Jul 2012 16:27:16 +0100
-Subject: [PATCH 53/76] marzen: Add Display Unit
+Subject: [PATCH 053/106] marzen: Add Display Unit
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

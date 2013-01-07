@@ -1,0 +1,257 @@
+From 0d6764c8a2f06ecca9d331ad2af8c44d7ea6eae5 Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Mon, 19 Nov 2012 15:26:30 +0000
+Subject: [PATCH 089/106] sound: soc: rcar: Remove monaural and fix not use
+ mutex in tasklet
+
+Based on work by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ arch/arm/mach-shmobile/hpb-dmae.c |   14 ----
+ sound/soc/rcar/sru_pcm.c          |  119 ++++++++++---------------------------
+ 2 files changed, 31 insertions(+), 102 deletions(-)
+
+diff --git a/arch/arm/mach-shmobile/hpb-dmae.c b/arch/arm/mach-shmobile/hpb-dmae.c
+index d3d4a58..7b5c4a4 100644
+--- a/arch/arm/mach-shmobile/hpb-dmae.c
++++ b/arch/arm/mach-shmobile/hpb-dmae.c
+@@ -74,26 +74,12 @@ static const struct hpb_dmae_slave_config rcar_dmae_slaves[] = {
+ 		.flags	= 0,
+ 		.dma_ch	= 28,
+ 	}, {
+-		.id	= HPBDMA_SLAVE_SSI0_TX_MN,
+-		.addr	= 0xffd90000 + 0x1008,
+-		.dcr	= CT | DIP | SPDS_16BIT | DMDL | DPDS_16BIT,
+-		.port	= 0x0000,
+-		.flags	= 0,
+-		.dma_ch	= 28,
+-	}, {
+ 		.id	= HPBDMA_SLAVE_SSI1_RX_ST,
+ 		.addr	= 0xffd90000 + 0x104c,
+ 		.dcr	= CT | DIP | SMDL | SPDS_32BIT | DPDAM | DPDS_32BIT,
+ 		.port	= 0x0101,
+ 		.flags	= 0,
+ 		.dma_ch	= 29,
+-	}, {
+-		.id	= HPBDMA_SLAVE_SSI1_RX_MN,
+-		.addr	= 0xffd90000 + 0x104c,
+-		.dcr	= CT | DIP | SMDL | SPDS_16BIT | DPDAM | DPDS_16BIT,
+-		.port	= 0x0101,
+-		.flags	= 0,
+-		.dma_ch	= 29,
+ 	},
+ };
+ 
+diff --git a/sound/soc/rcar/sru_pcm.c b/sound/soc/rcar/sru_pcm.c
+index 7738e54..202fd8e 100644
+--- a/sound/soc/rcar/sru_pcm.c
++++ b/sound/soc/rcar/sru_pcm.c
+@@ -182,46 +182,6 @@ static int sru_ssi_init(void)
+ 	return 0;
+ }
+ 
+-static int sru_ssi_control(struct snd_pcm_substream *substream)
+-{
+-	struct snd_pcm_runtime *runtime = substream->runtime;
+-	int dir = substream->stream == SNDRV_PCM_STREAM_CAPTURE;
+-	int ret = 0;
+-
+-	FNC_ENTRY
+-	/* channel(stereo/mono) INDEPENDANT control */
+-	if (!dir) {	/* playback */
+-		if (runtime->channels == STEREO) {
+-			writel(SSICR_P4643_ST,
+-				&audioinfo.ssireg[PLAY]->cr);
+-			writel(SSIWS_ST,
+-				&audioinfo.ssireg[PLAY]->wsr);
+-		} else if (runtime->channels == MONO) {
+-			writel(SSICR_P4643_MN,
+-				&audioinfo.ssireg[PLAY]->cr);
+-			writel(SSIWS_MN,
+-				&audioinfo.ssireg[PLAY]->wsr);
+-		} else {
+-			pr_err("channel is valid.\n");
+-			ret = -EINVAL;
+-		}
+-	} else {	/* capture */
+-		if (runtime->channels == STEREO) {
+-			writel(SSICR_C4643_ST,
+-				&audioinfo.ssireg[CAPT]->cr);
+-		} else if (runtime->channels == MONO) {
+-			writel(SSICR_C4643_MN,
+-				&audioinfo.ssireg[CAPT]->cr);
+-		} else {
+-			pr_err("channel is valid.\n");
+-			ret = -EINVAL;
+-		}
+-	}
+-
+-	FNC_EXIT
+-	return ret;
+-}
+-
+ static void sru_ssi_start(struct snd_pcm_substream *substream)
+ {
+ 	int dir = substream->stream == SNDRV_PCM_STREAM_CAPTURE;
+@@ -282,21 +242,13 @@ static bool sru_dmae_filter(struct dma_chan *chan, void *slave)
+ /* get dma slave id */
+ static int sru_dmae_slave_id(struct snd_pcm_substream *substream)
+ {
+-	struct snd_pcm_runtime *runtime = substream->runtime;
+ 	int dir = substream->stream == SNDRV_PCM_STREAM_CAPTURE;
+ 	int sid;		/* dma slave id */
+ 
+-	if (!dir) { /* playback */
+-		if (runtime->channels == STEREO)
+-			sid = HPBDMA_SLAVE_SSI0_TX_ST;
+-		else /* MONO */
+-			sid = HPBDMA_SLAVE_SSI0_TX_MN;
+-	} else { /* capture */
+-		if (runtime->channels == STEREO)
+-			sid = HPBDMA_SLAVE_SSI1_RX_ST;
+-		else /* MONO */
+-			sid = HPBDMA_SLAVE_SSI1_RX_MN;
+-	}
++	if (!dir) /* playback */
++		sid = HPBDMA_SLAVE_SSI0_TX_ST;
++	else /* capture */
++		sid = HPBDMA_SLAVE_SSI1_RX_ST;
+ 
+ 	return sid;
+ }
+@@ -387,31 +339,14 @@ static void sru_io_tasklet(unsigned long data)
+ {
+ 	struct snd_pcm_substream *substream = (struct snd_pcm_substream *)data;
+ 	struct rcar_pcm_info *pcminfo = substream->runtime->private_data;
+-	struct hpb_dmae_slave *param = &pcminfo->de_param;
+-	dma_cap_mask_t mask;
+ 
+ 	FNC_ENTRY
+ 	if (pcminfo->de_first == 1) {
+-		dma_cap_zero(mask);
+-		dma_cap_set(DMA_SLAVE, mask);
+-
+-		/* get dma slave id */
+-		param->slave_id = sru_dmae_slave_id(substream);
+-
+-		/* request dma channel */
+-		if (pcminfo->de_chan == NULL) {
+-			pcminfo->de_chan =
+-			    dma_request_channel(mask, sru_dmae_filter, param);
+-			if (!pcminfo->de_chan)
+-				pr_err("DMA channel request error\n");
+-		}
+-
+ 		/* 1st dma setting */
+ 		sru_dmae_start(substream);
+ 		sru_ssi_start(substream);
+ 		pcminfo->de_first = 0;
+ 	}
+-
+ 	/* next dma setting */
+ 	sru_dmae_start(substream);
+ 
+@@ -425,13 +360,6 @@ static int sru_audio_start(struct snd_pcm_substream *substream)
+ 
+ 	FNC_ENTRY
+ 
+-	/* control SSI channel(stereo/mono) */
+-	ret = sru_ssi_control(substream);
+-	if (ret) {
+-		pr_err("sru_ssi_control : err=%d\n", ret);
+-		return ret;
+-	}
+-
+ 	/* start dma */
+ 	pcminfo->de_start = 1;
+ 
+@@ -525,13 +453,8 @@ static int sru_dai_startup(struct snd_pcm_substream *substream,
+ static void sru_dai_shutdown(struct snd_pcm_substream *substream,
+ 			     struct snd_soc_dai *dai)
+ {
+-	struct rcar_pcm_info *pcminfo = substream->runtime->private_data;
+-
+-	if (pcminfo->de_chan) {
+-		dma_release_channel(pcminfo->de_chan);
+-		pcminfo->de_chan = NULL;
+-	}
+-
++	FNC_ENTRY
++	FNC_EXIT
+ 	return;
+ }
+ 
+@@ -582,7 +505,7 @@ static struct snd_pcm_hardware sru_pcm_hardware = {
+ 	.rates			= SNDRV_PCM_RATE_8000_48000,
+ 	.rate_min		= 8000,
+ 	.rate_max		= 48000,
+-	.channels_min		= 1,
++	.channels_min		= 2,
+ 	.channels_max		= 2,
+ 	.buffer_bytes_max	= BUFFER_BYTES_MAX,
+ 	.period_bytes_min	= PERIOD_BYTES_MIN,
+@@ -593,22 +516,42 @@ static struct snd_pcm_hardware sru_pcm_hardware = {
+ 
+ static int sru_pcm_open(struct snd_pcm_substream *substream)
+ {
++	struct rcar_pcm_info *pcminfo = substream->runtime->private_data;
++	struct hpb_dmae_slave *param = &pcminfo->de_param;
++	dma_cap_mask_t mask;
+ 	int ret = 0;
+ 
+ 	FNC_ENTRY
+ 	ret = snd_soc_set_runtime_hwparams(substream, &sru_pcm_hardware);
+ 
++	dma_cap_zero(mask);
++	dma_cap_set(DMA_SLAVE, mask);
++
++	/* get dma slave id */
++	param->slave_id = sru_dmae_slave_id(substream);
++
++	/* request dma channel */
++	if (pcminfo->de_chan == NULL) {
++		pcminfo->de_chan =
++		    dma_request_channel(mask, sru_dmae_filter, param);
++		if (!pcminfo->de_chan)
++			printk(KERN_ERR "DMA channel request error\n");
++	}
+ 	FNC_EXIT
+ 	return ret;
+ }
+ 
+ static int sru_pcm_close(struct snd_pcm_substream *substream)
+ {
+-	int ret = 0;
++	struct rcar_pcm_info *pcminfo = substream->runtime->private_data;
+ 
+ 	FNC_ENTRY
++	if (pcminfo->de_chan) {
++		dma_release_channel(pcminfo->de_chan);
++		pcminfo->de_chan = NULL;
++	}
+ 	FNC_EXIT
+-	return ret;
++	return 0;
+ }
+ 
+ static int sru_hw_params(struct snd_pcm_substream *substream,
+@@ -702,13 +645,13 @@ struct snd_soc_dai_driver sru_soc_dai[] = {
+ 		.playback = {
+ 			.rates		= SNDRV_PCM_RATE_8000_48000,
+ 			.formats	= SNDRV_PCM_FMTBIT_S16_LE,
+-			.channels_min	= 1,
++			.channels_min	= 2,
+ 			.channels_max	= 2,
+ 		},
+ 		.capture = {
+ 			.rates		= SNDRV_PCM_RATE_8000_48000,
+ 			.formats	= SNDRV_PCM_FMTBIT_S16_LE,
+-			.channels_min	= 1,
++			.channels_min	= 2,
+ 			.channels_max	= 2,
+ 		},
+ 		.ops = &sru_dai_ops,
+-- 
+1.7.5.4
+

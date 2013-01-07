@@ -1,0 +1,33 @@
+From 54314a76a1689b11469ab92c3ceae9cca871078f Mon Sep 17 00:00:00 2001
+From: Phil Edworthy <phil.edworthy@renesas.com>
+Date: Tue, 11 Dec 2012 16:08:45 +0000
+Subject: [PATCH 106/106] sata: rcar: Remove duplicate entry in Kconfig
+
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
+---
+ drivers/ata/Kconfig |    8 --------
+ 1 files changed, 0 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/ata/Kconfig b/drivers/ata/Kconfig
+index ad6a550..ebd7a06 100644
+--- a/drivers/ata/Kconfig
++++ b/drivers/ata/Kconfig
+@@ -299,14 +299,6 @@ config SATA_RCAR
+ 
+ 	  If unsure, say N.
+ 
+-config SATA_RCAR
+-	tristate "R-Car SATA support"
+-	help
+-	  This option enables support for the Renesas R-Car series
+-	  Serial ATA controller.
+-
+-	  If unsure, say N.
+-
+ comment "PATA SFF controllers with BMDMA"
+ 
+ config PATA_ALI
+-- 
+1.7.5.4
+

@@ -1,8 +1,10 @@
-From 775fed7cb853b77eeb92234d5fd7219e4b0b581f Mon Sep 17 00:00:00 2001
+From 6073883af69a2f7cb3ca77fbe295fd113d68e603 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 18 Oct 2012 16:04:04 +0100
-Subject: [PATCH 75/76] arm: shmobile: r8a7779: Add SATA clock
+Subject: [PATCH 075/106] arm: shmobile: r8a7779: Add SATA clock
 
+
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/mach-shmobile/clock-r8a7779.c |    4 +++-
  1 files changed, 3 insertions(+), 1 deletions(-)

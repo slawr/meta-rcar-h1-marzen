@@ -1,12 +1,13 @@
-From 3724b83f45492b8281ace041ef4aecbab0884b9a Mon Sep 17 00:00:00 2001
+From ab617d30c262b84285017c8cd28d469b39b6c07e Mon Sep 17 00:00:00 2001
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Date: Thu, 12 Jul 2012 14:59:04 +0900
-Subject: [PATCH 27/76] thermal: add Renesas R-Car thermal sensor support
+Subject: [PATCH 027/106] thermal: add Renesas R-Car thermal sensor support
 
 This patch add basic Renesas R-Car thermal sensor support.
 It was tested on R-Car H1 Marzen board.
 
 Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  drivers/thermal/Kconfig        |    8 ++
  drivers/thermal/Makefile       |    3 +-

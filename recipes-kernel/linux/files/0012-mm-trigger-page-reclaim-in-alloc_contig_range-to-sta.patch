@@ -1,7 +1,7 @@
-From 8e0e3a6490100c7389249354d1e167b31c571ec6 Mon Sep 17 00:00:00 2001
+From e712c162bfd7aecc7072379313c89a59ad6575d3 Mon Sep 17 00:00:00 2001
 From: Marek Szyprowski <m.szyprowski@samsung.com>
 Date: Wed, 25 Jan 2012 12:49:24 +0100
-Subject: [PATCH 12/76] mm: trigger page reclaim in alloc_contig_range() to
+Subject: [PATCH 012/106] mm: trigger page reclaim in alloc_contig_range() to
  stabilise watermarks
 
 alloc_contig_range() performs memory allocation so it also should keep
@@ -18,13 +18,14 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  include/linux/mmzone.h |    9 +++++++
  mm/page_alloc.c        |   60 ++++++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 69 insertions(+), 0 deletions(-)
 
 diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-index 8c1335f..26f2040 100644
+index 7d2db87..8d6da7d 100644
 --- a/include/linux/mmzone.h
 +++ b/include/linux/mmzone.h
 @@ -63,8 +63,10 @@ enum {
@@ -53,7 +54,7 @@ index 8c1335f..26f2040 100644
  
  #ifndef CONFIG_SPARSEMEM
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 4615531..22348ae 100644
+index f7b030c..c0acafa 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -5079,6 +5079,11 @@ static void __setup_per_zone_wmarks(void)

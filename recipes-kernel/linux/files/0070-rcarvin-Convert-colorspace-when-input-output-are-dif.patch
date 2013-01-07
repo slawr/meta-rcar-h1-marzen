@@ -1,7 +1,7 @@
-From 335cfd9e558b294e20bd6799a2b7f18a9e216369 Mon Sep 17 00:00:00 2001
+From cddb0ccad084c0211739ffb63dc60e2425e88aee Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Fri, 5 Oct 2012 09:46:32 +0100
-Subject: [PATCH 70/76] rcarvin: Convert colorspace when input & output are
+Subject: [PATCH 070/106] rcarvin: Convert colorspace when input & output are
  different
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>

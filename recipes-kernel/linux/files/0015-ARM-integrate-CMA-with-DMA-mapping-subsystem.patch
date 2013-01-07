@@ -1,7 +1,7 @@
-From a7ef0b4b3e2d3a5043e7351670463919c918b893 Mon Sep 17 00:00:00 2001
+From 699d7d2894d686d7f67e25a0ff11bdcd4713a7ef Mon Sep 17 00:00:00 2001
 From: Marek Szyprowski <m.szyprowski@samsung.com>
 Date: Thu, 29 Dec 2011 13:09:51 +0100
-Subject: [PATCH 15/76] ARM: integrate CMA with DMA-mapping subsystem
+Subject: [PATCH 015/106] ARM: integrate CMA with DMA-mapping subsystem
 
 This patch adds support for CMA to dma-mapping subsystem for ARM
 architecture. By default a global CMA area is used, but specific devices
@@ -28,6 +28,7 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  Documentation/kernel-parameters.txt   |    4 +
  arch/arm/Kconfig                      |    2 +
@@ -57,7 +58,7 @@ index 669e8bb..41996c6 100644
  			in an oops report.
  			Range: 0 - 8192
 diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 36586dba..cbbbc45 100644
+index 7fe19a3..ca291d8 100644
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
 @@ -4,6 +4,8 @@ config ARM
@@ -672,10 +673,10 @@ index 8f5813b..c21d06c 100644
  	memblock_allow_resize();
  	memblock_dump_all();
 diff --git a/arch/arm/mm/mm.h b/arch/arm/mm/mm.h
-index 27f4a61..93dc0c1 100644
+index d3f25c9..db455c8 100644
 --- a/arch/arm/mm/mm.h
 +++ b/arch/arm/mm/mm.h
-@@ -67,5 +67,8 @@ extern u32 arm_dma_limit;
+@@ -70,5 +70,8 @@ extern u32 arm_dma_limit;
  #define arm_dma_limit ((u32)~0)
  #endif
  
@@ -685,7 +686,7 @@ index 27f4a61..93dc0c1 100644
  void arm_mm_memblock_reserve(void);
 +void dma_contiguous_remap(void);
 diff --git a/arch/arm/mm/mmu.c b/arch/arm/mm/mmu.c
-index aa78de8..e5dad60 100644
+index 7d41919..15c6abe 100644
 --- a/arch/arm/mm/mmu.c
 +++ b/arch/arm/mm/mmu.c
 @@ -288,6 +288,11 @@ static struct mem_type mem_types[] = {
@@ -733,7 +734,7 @@ index aa78de8..e5dad60 100644
  		pmd_t *p = pmd;
  
  #ifndef CONFIG_ARM_LPAE
-@@ -814,7 +822,7 @@ static int __init early_vmalloc(char *arg)
+@@ -887,7 +895,7 @@ static int __init early_vmalloc(char *arg)
  }
  early_param("vmalloc", early_vmalloc);
  
@@ -742,7 +743,7 @@ index aa78de8..e5dad60 100644
  
  void __init sanity_check_meminfo(void)
  {
-@@ -897,8 +905,8 @@ void __init sanity_check_meminfo(void)
+@@ -970,8 +978,8 @@ void __init sanity_check_meminfo(void)
  			bank->size = newsize;
  		}
  #endif
@@ -753,7 +754,7 @@ index aa78de8..e5dad60 100644
  
  		j++;
  	}
-@@ -923,8 +931,8 @@ void __init sanity_check_meminfo(void)
+@@ -996,8 +1004,8 @@ void __init sanity_check_meminfo(void)
  	}
  #endif
  	meminfo.nr_banks = j;
@@ -764,7 +765,7 @@ index aa78de8..e5dad60 100644
  }
  
  static inline void prepare_page_table(void)
-@@ -949,8 +957,8 @@ static inline void prepare_page_table(void)
+@@ -1022,8 +1030,8 @@ static inline void prepare_page_table(void)
  	 * Find the end of the first block of lowmem.
  	 */
  	end = memblock.memory.regions[0].base + memblock.memory.regions[0].size;
@@ -775,7 +776,7 @@ index aa78de8..e5dad60 100644
  
  	/*
  	 * Clear out all the kernel space mappings, except for the first
-@@ -1093,8 +1101,8 @@ static void __init map_lowmem(void)
+@@ -1167,8 +1175,8 @@ static void __init map_lowmem(void)
  		phys_addr_t end = start + reg->size;
  		struct map_desc map;
  
@@ -786,7 +787,7 @@ index aa78de8..e5dad60 100644
  		if (start >= end)
  			break;
  
-@@ -1115,11 +1123,12 @@ void __init paging_init(struct machine_desc *mdesc)
+@@ -1189,11 +1197,12 @@ void __init paging_init(struct machine_desc *mdesc)
  {
  	void *zero_page;
  

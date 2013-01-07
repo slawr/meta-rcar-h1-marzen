@@ -1,8 +1,9 @@
-From 24d86fd8972bdcf1cc7e934ebd5bea847d43c1de Mon Sep 17 00:00:00 2001
+From 2c9b8ce43c26a23bcc58cd2f13fe7215bdd76092 Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Tue, 10 Jul 2012 08:28:33 +0100
-Subject: [PATCH 47/76] sound: soc: ak4642: prevent un-necessary changes to
- SG_SL1 which provide for a confusing mixer experience
+Subject: [PATCH 047/106] sound: soc: ak4642: prevent un-necessary changes to
+ SG_SL1 which provide for a confusing mixer
+ experience
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

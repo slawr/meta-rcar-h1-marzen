@@ -1,7 +1,7 @@
-From af8b1ddfb78af4289704827fe0b544ac7838614d Mon Sep 17 00:00:00 2001
+From 1993177ba0f290c80bd38d0dc654dc6d72946bab Mon Sep 17 00:00:00 2001
 From: Phil Edworthy <phil.edworthy@renesas.com>
 Date: Thu, 12 Jul 2012 10:34:00 +0100
-Subject: [PATCH 41/76] marzen: add board support for USB
+Subject: [PATCH 041/106] marzen: add board support for USB
 
 Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---

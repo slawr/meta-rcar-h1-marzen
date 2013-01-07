@@ -1,9 +1,10 @@
-From 35cdef3f3a728f514813fd0ce1e196ab5284c6b8 Mon Sep 17 00:00:00 2001
+From 6f66f715e89b5e3528a8a861acc1db128d174282 Mon Sep 17 00:00:00 2001
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 Date: Wed, 10 Oct 2012 19:57:02 -0700
-Subject: [PATCH 33/76] ARM: shmobile: marzen: add HSPI support
+Subject: [PATCH 033/106] ARM: shmobile: marzen: add HSPI support
 
 Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  arch/arm/configs/marzen_defconfig     |    2 ++
  arch/arm/mach-shmobile/board-marzen.c |   25 +++++++++++++++++++++++++

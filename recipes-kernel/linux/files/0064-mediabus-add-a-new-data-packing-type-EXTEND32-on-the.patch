@@ -1,7 +1,7 @@
-From fded0a4881b2ffcd8f14ca12463ac14625158255 Mon Sep 17 00:00:00 2001
+From ef40cb2b57c8b0b8add1b01408a0580a52f431e5 Mon Sep 17 00:00:00 2001
 From: Katsuya Matsubara <matsu@igel.co.jp>
 Date: Thu, 31 May 2012 11:26:55 +0900
-Subject: [PATCH 64/76] mediabus: add a new data packing type 'EXTEND32' on
+Subject: [PATCH 064/106] mediabus: add a new data packing type 'EXTEND32' on
  the media-bus
 
 A new data packing type 'SOC_MBUS_PACKING_EXTEND32' means that

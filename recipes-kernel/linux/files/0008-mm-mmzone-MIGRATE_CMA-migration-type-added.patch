@@ -1,7 +1,7 @@
-From b98e5395c77f23adf76e3ec4716355a564b17866 Mon Sep 17 00:00:00 2001
+From 28bbba0b279657643b77cb8904d5b3cf721024ce Mon Sep 17 00:00:00 2001
 From: Michal Nazarewicz <mina86@mina86.com>
 Date: Thu, 29 Dec 2011 13:09:50 +0100
-Subject: [PATCH 08/76] mm: mmzone: MIGRATE_CMA migration type added
+Subject: [PATCH 008/106] mm: mmzone: MIGRATE_CMA migration type added
 
 The MIGRATE_CMA migration type has two main characteristics:
 (i) only movable pages can be allocated from MIGRATE_CMA
@@ -31,6 +31,7 @@ Tested-by: Ohad Ben-Cohen <ohad@wizery.com>
 Tested-by: Benjamin Gaignard <benjamin.gaignard@linaro.org>
 Tested-by: Robert Nelson <robertcnelson@gmail.com>
 Tested-by: Barry Song <Baohua.Song@csr.com>
+Signed-off-by: Phil Edworthy <phil.edworthy@renesas.com>
 ---
  include/linux/gfp.h    |    3 ++
  include/linux/mmzone.h |   38 +++++++++++++++++++----
@@ -55,7 +56,7 @@ index 052a5b6..78d32a7 100644
  
  #endif /* __LINUX_GFP_H */
 diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-index dff7115..8c1335f 100644
+index 5f6806b..7d2db87 100644
 --- a/include/linux/mmzone.h
 +++ b/include/linux/mmzone.h
 @@ -35,13 +35,37 @@
@@ -117,7 +118,7 @@ index e338407..3922002 100644
  	  Allows the migration of the physical location of pages of processes
  	  while the virtual addresses are not changed. This is useful in
 diff --git a/mm/compaction.c b/mm/compaction.c
-index 7a92e41..da7d35e 100644
+index dcb3865..eede981 100644
 --- a/mm/compaction.c
 +++ b/mm/compaction.c
 @@ -45,6 +45,11 @@ static void map_pages(struct list_head *list)
@@ -153,7 +154,7 @@ index 7a92e41..da7d35e 100644
  
  	/* Otherwise skip the block */
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index d6b580c..0869eb1 100644
+index 630bc3d8..205897d 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -750,6 +750,24 @@ void __meminit __free_pages_bootmem(struct page *page, unsigned int order)
