@@ -1,7 +1,7 @@
 From 212a157b6022c0531b8948a9a1cd8e2bc3e5321d Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Wed, 14 Mar 2012 13:12:14 +0900
-Subject: [PATCH 09/10] Remove white-space
+Subject: [PATCH 09/13] Remove white-space
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

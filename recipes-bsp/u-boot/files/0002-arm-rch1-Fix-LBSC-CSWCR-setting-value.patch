@@ -1,7 +1,7 @@
 From 7c46d8978e106234445ccc5dfd356210ada5f75c Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Mon, 21 Nov 2011 15:10:04 +0900
-Subject: [PATCH 02/10] arm: rch1: Fix LBSC CSWCR setting value
+Subject: [PATCH 02/13] arm: rch1: Fix LBSC CSWCR setting value
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

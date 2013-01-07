@@ -1,7 +1,7 @@
 From 122b1b68f389b20c7fbfc7b4437465720b6034a7 Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Fri, 6 Jan 2012 14:10:35 +0900
-Subject: [PATCH 06/10] arm: rch1: Add reboot support
+Subject: [PATCH 06/13] arm: rch1: Add reboot support
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

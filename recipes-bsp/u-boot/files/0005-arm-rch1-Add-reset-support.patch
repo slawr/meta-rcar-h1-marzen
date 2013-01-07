@@ -1,7 +1,7 @@
 From ff682140d240061d3a1e6af388c7832905ea8863 Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Fri, 6 Jan 2012 14:09:24 +0900
-Subject: [PATCH 05/10] arm: rch1: Add reset support
+Subject: [PATCH 05/13] arm: rch1: Add reset support
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

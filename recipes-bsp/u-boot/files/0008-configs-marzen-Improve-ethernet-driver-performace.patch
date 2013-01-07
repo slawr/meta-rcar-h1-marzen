@@ -1,7 +1,7 @@
 From ea18ab534a0fedeb2ad3f62cc02dd5bc19de3e22 Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Wed, 14 Mar 2012 13:11:38 +0900
-Subject: [PATCH 08/10] configs: marzen: Improve ethernet driver performace
+Subject: [PATCH 08/13] configs: marzen: Improve ethernet driver performace
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

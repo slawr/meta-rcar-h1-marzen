@@ -1,7 +1,7 @@
 From 6cdf9900eb20edf0276a5a69c879482a407ee29f Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Mon, 21 Nov 2011 15:10:35 +0900
-Subject: [PATCH 03/10] arm: rch1: Fix DBSC3 initialize
+Subject: [PATCH 03/13] arm: rch1: Fix DBSC3 initialize
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

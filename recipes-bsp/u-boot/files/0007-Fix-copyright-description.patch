@@ -1,7 +1,7 @@
 From 11792b7b0561cd2aff79c27706017177dd0f7a74 Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Fri, 6 Jan 2012 14:11:33 +0900
-Subject: [PATCH 07/10] Fix copyright description
+Subject: [PATCH 07/13] Fix copyright description
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---

@@ -13,4 +13,7 @@ SRC_URI_append_rcar-h1-marzen += " \
 	file://0008-configs-marzen-Improve-ethernet-driver-performace.patch \
 	file://0009-Remove-white-space.patch \
 	file://0010-board-marzen-Add-DDR-DQS-extension-workaround.patch \
+	file://0011-board-marzen-Fix-DDR-ODT-setting.patch \
+	file://0012-board-marzen-Fix-power-down-configuration-register-v.patch \
+	file://0013-board-marzen-Add-noise-mask-for-preamble-detection-p.patch \
 	"

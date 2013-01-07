@@ -1,0 +1,27 @@
+From d7a2f41488c89f0414c8cefe4907a9234150bdd6 Mon Sep 17 00:00:00 2001
+From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+Date: Mon, 26 Nov 2012 14:00:36 +0900
+Subject: [PATCH 12/13] board: marzen: Fix power-down configuration register
+ value
+
+Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+---
+ board/renesas/marzen/marzen.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/board/renesas/marzen/marzen.c b/board/renesas/marzen/marzen.c
+index d47d313..21ae341 100644
+--- a/board/renesas/marzen/marzen.c
++++ b/board/renesas/marzen/marzen.c
+@@ -321,7 +321,7 @@ void do_memc_init(u32 base)
+ 	MEMC_W(base, DBBS0CNT1, 0x00000000);	/* DBBS0CNT1 */
+ 	MEMC_W(base, DBCALCNF, 0x01005398);	/* DBCALCNF */
+ 	MEMC_W(base, DBCALTR, 0x05dc05dc);	/* DBCALTR */
+-	MEMC_W(base, DBPDNCNF, 0x01005398);	/* DBPDCNF */
++	MEMC_W(base, DBPDNCNF, 0x00000200);	/* DBPDNCNF */
+ 	/* (33) */
+ 	MEMC_W(base, DBRFCNF0, 0xc8);		/* 200cycle */
+ 	if (readl(MODEMR) & MD1)
+-- 
+1.7.5.4
+

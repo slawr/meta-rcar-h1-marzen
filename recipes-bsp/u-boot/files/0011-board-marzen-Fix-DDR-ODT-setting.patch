@@ -1,0 +1,104 @@
+From ed00b79106b4d33eae68dc305f5f6102a6084a3b Mon Sep 17 00:00:00 2001
+From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+Date: Mon, 26 Nov 2012 13:59:09 +0900
+Subject: [PATCH 11/13] board: marzen: Fix DDR ODT setting
+
+Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
+---
+ board/renesas/marzen/marzen.c |   35 +++++++++++++++++------------------
+ 1 files changed, 17 insertions(+), 18 deletions(-)
+
+diff --git a/board/renesas/marzen/marzen.c b/board/renesas/marzen/marzen.c
+index fe3b05c..d47d313 100644
+--- a/board/renesas/marzen/marzen.c
++++ b/board/renesas/marzen/marzen.c
+@@ -229,7 +229,7 @@ void do_memc_init(u32 base)
+ 	MEMC_W(base, DBTR15, 0x4);		/* TCKEL:4 */
+ 	MEMC_W(base, DBTR16, 0x10171001);	/* DQL:23 */
+ 	MEMC_W(base, DBTR17, 0xc000c);	/* TMOD:12, TRDMR:12 */
+-	MEMC_W(base, DBTR18, 0);		/* ODT */
++	MEMC_W(base, DBTR18, 0x00000200);	/* ODT */
+ 	MEMC_W(base, DBTR19, 0x40);		/* TZQCS */
+ 	MEMC_W(base, DBRNK0, 0);		/* initial value */
+ 	/* (8) */
+@@ -273,9 +273,8 @@ void do_memc_init(u32 base)
+ 	val = MEMC_R(base, DBPDCNT0);
+ 	MEMC_W(base, DBPDCNT0, val | 0x80000000);	/* BW32:1 */
+ 	/* (22) */
+-	MEMC_W(base, DBPDCNT0, 0x80000000);	/* OFFSET:0 */
+-	/* (23) */
+-	MEMC_W(base, DBPDCNT0, 0x80010000);	/* ODT:60ohm */
++	val = MEMC_R(base, DBPDCNT0);
++	MEMC_W(base, DBPDCNT0, val | 0x00110000);	/* ODT:disable */
+ 	MEMC_W(base, DBPDCNT1, 0);		/* Drive:40ohm */
+ 	MEMC_W(base, DBPDCNT2, 0);		/* initial value */
+ 
+@@ -292,38 +291,38 @@ void do_memc_init(u32 base)
+ #endif /* CONFIG_DDR_DQS_EXTENSION */
+ 
+ 	/* ddr3-sdram setting */
+-	/* (24) */
++	/* (23) */
+ 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
+-	/* (25) */
++	/* (24) */
+ 	MEMC_W(base, DBCMD, 0x2100c350);	/* RstH, 100us */
+-	/* (26) */
++	/* (25) */
+ 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
+ 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
+ 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
+ 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
+-	/* (27) */
++	/* (26) */
+ 	MEMC_W(base, DBCMD, 0x11000055);	/* PDXt, 170ns */
+-	/* (28) */
++	/* (27) */
+ 	MEMC_W(base, DBCMD, 0x2a000008);	/* MR2, CWL:6 */
+-	/* (29) */
++	/* (28) */
+ 	MEMC_W(base, DBCMD, 0x2b000000);	/* MR3 */
+-	/* (30) */
++	/* (29) */
+ 	MEMC_W(base, DBCMD, 0x29000000);	/* MR1, AL:0, DLL:En, ODT=Dis,
+ 						ODS:40ohm */
+-	/* (31) */
++	/* (30) */
+ 	MEMC_W(base, DBCMD, 0x28000930);	/* MR0, Na, DLL_RES, BL:8,
+ 						BT:Seque, CL:7, WR:8 */
+-	/* (32) */
++	/* (31) */
+ 	MEMC_W(base, DBCMD, 0x03000200);	/* ZQCL, 512 */
+ 
+ 	/* dbsc3 setting-2 */
+-	/* (33) */
++	/* (32) */
+ 	MEMC_W(base, DBBS0CNT0, 0x00000000);	/* DBBS0CNT0 */
+ 	MEMC_W(base, DBBS0CNT1, 0x00000000);	/* DBBS0CNT1 */
+ 	MEMC_W(base, DBCALCNF, 0x01005398);	/* DBCALCNF */
+ 	MEMC_W(base, DBCALTR, 0x05dc05dc);	/* DBCALTR */
+ 	MEMC_W(base, DBPDNCNF, 0x01005398);	/* DBPDCNF */
+-	/* (34) */
++	/* (33) */
+ 	MEMC_W(base, DBRFCNF0, 0xc8);		/* 200cycle */
+ 	if (readl(MODEMR) & MD1)
+ 		MEMC_W(base, DBRFCNF1, 0xdde);	/* 500MHz */
+@@ -331,12 +330,12 @@ void do_memc_init(u32 base)
+ 		MEMC_W(base, DBRFCNF1, 0xaf0);	/* 375MHz */
+ 
+ 	MEMC_W(base, DBRFCNF2, 0);		/* REFINT:1/1 */
+-	/* (35) */
++	/* (34) */
+ 	MEMC_W(base, DBRFEN, 1);		/* DBRFEN. ARFEN */
+ 
+-	/* (36) */
++	/* (35) */
+ 	MEMC_W(base, DBACEN, 1);		/* DBACEN. ACCEN */
+-	/* (37) */
++	/* (36) */
+ 	MEMC_R(base, DBWAIT);			/* wait for done */
+ }
+ 
+-- 
+1.7.5.4
+

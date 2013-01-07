@@ -1,7 +1,7 @@
 From 8f98768e44f42191e7415b517011b3fe0d99d36e Mon Sep 17 00:00:00 2001
 From: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 Date: Mon, 21 Nov 2011 15:09:15 +0900
-Subject: [PATCH 01/10] arm: rch1: Add R-Car H1 and Marzen support
+Subject: [PATCH 01/13] arm: rch1: Add R-Car H1 and Marzen support
 
 Signed-off-by: Kouei Abe <kouei.abe.cp@rms.renesas.com>
 ---
