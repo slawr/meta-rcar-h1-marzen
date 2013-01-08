@@ -61,7 +61,7 @@ To enable the rcar-h1-marzen layer, add the rcar-h1-marzen MACHINE to local.conf
 
   MACHINE ?= "rcar-h1-marzen"
 
-You should then be able to build a rcar-h1-marzen image as such:
+You should then be able to build a rcar-h1-marzen image such as:
 
   $ source oe-init-build-env
   $ bitbake core-image-minimal

@@ -7,8 +7,7 @@ The metadata used to generate the images shipped with this BSP, in
 addition to the code contained in this BSP, can be found at the
 following location:
 
-# fixme: Wrong Yocto version
-#http://www.yoctoproject.org/downloads/yocto-1.1/poky-edison-6.0.tar.bz2
+http://www.yoctoproject.org/downloads/yocto-1.3/poky-danny-8.0.tar.bz2
 
 The metadata used to generate the images shipped with this BSP, in
 addition to the code contained in this BSP, can also be found at the
