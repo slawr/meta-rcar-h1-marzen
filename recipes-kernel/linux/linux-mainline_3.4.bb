@@ -3,17 +3,20 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 # DEPENDS += "lzop-native"
 
-COMPATIBLE_MACHINE = "rcar-h1-marzen"
-
 inherit kernel
+require recipes-kernel/linux/linux-yocto.inc
+
+COMPATIBLE_MACHINE = "rcar-h1-marzen"
 
 KERNEL_IMAGETYPE = "uImage"
 
-PR = "r0"
+PR = "r1"
+
+# Enable this line if you wish to build a kernel compliant with Genivi (www.genivi.org)
+#require genivi-requirements.inc
 
 # Greg's 3.4.23 tag
 SRCREV = "9fa52906a2e2d6de4f95ee6df185759ee70b59c6"
-
 
 SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;branch=linux-3.4.y;protocol=git \
 	file://defconfig \
@@ -125,7 +128,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
 	file://0106-sata-rcar-Remove-duplicate-entry-in-Kconfig.patch \
 	"
 
-S = "${WORKDIR}/git"
+#S = "${WORKDIR}/git"
+S = "${WORKDIR}/git-dir"
 
 # We need to pass it as param since kernel might support more then one
 # machine, with different entry points
