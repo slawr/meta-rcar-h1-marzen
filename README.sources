@@ -7,11 +7,11 @@ The metadata used to generate the images shipped with this BSP, in
 addition to the code contained in this BSP, can be found at the
 following location:
 
-http://www.yoctoproject.org/downloads/yocto-1.3/poky-danny-8.0.tar.bz2
+http://www.yoctoproject.org/downloads/yocto-1.4/poky-dylan-9.0.0.tar.bz2
 
 The metadata used to generate the images shipped with this BSP, in
 addition to the code contained in this BSP, can also be found at the
 following locations:
 
-git://git.yoctoproject.org/poky.git
-git://git.yoctoproject.org/meta-xxxx
+git://git.yoctoproject.org
+https://github.com/slawr/meta-rcar-h1-marzen

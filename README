@@ -2,6 +2,8 @@ This README file contains information on building the meta-rcar-h1-marzen
 BSP layer, and booting the images contained in the /binary directory.
 Please see the corresponding sections below for details.
 
+Further information on the R-Car platform can be found here:
+http://www.renesas.eu/products/soc/assp/automotive/index.jsp?campaign=tb_prod
 
 Dependencies
 ============
@@ -24,7 +26,7 @@ http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editio
 To direct Yocto to use this toolchain you should add the following entries to 
 your local.conf in poky/build/conf/:
 TCMODE = "external-csl"
-EXTERNAL_TOOLCHAIN = "/home/user/tools/arm-2010.09"
+EXTERNAL_TOOLCHAIN = "<path to toolchain>/arm-2010.09"
 CSL_VER_MAIN = "2010.09-50"
 TARGET_PREFIX = "arm-none-linux-gnueabi-"
 
@@ -33,8 +35,7 @@ EXTERNAL_TOOLCHAIN should point to the root directory of where the toolchain was
 
 Patches
 =======
-This layer will be upstreamed to the Yocto project. Until that is achieved 
-please submit any patches against this BSP to the maintainer.
+Please submit any patches against this BSP to the maintainer.
 
 Maintainer: Stephen Lawrence <stephen.lawrence@renesas.com>
 
@@ -42,11 +43,13 @@ Maintainer: Stephen Lawrence <stephen.lawrence@renesas.com>
 Table of Contents
 =================
 
-  I. Building the meta-rcar-h1-marzen BSP layer
- II. Booting the images in /binary
-III. Kernel notes
+1. Building the meta-rcar-h1-marzen BSP layer
+2. Booting the images in /binary
+3. Kernel notes
+4. Genivi notes
+5. History
 
-I. Building the meta-rcar-h1-marzen BSP layer
+1. Building the meta-rcar-h1-marzen BSP layer
 =============================================
 
 Assuming you extracted the BSP tarball contents at the top-level of 
@@ -73,8 +76,8 @@ To build u-boot alone:
   $ bitbake u-boot
 
 
-II. Booting the images in /binary
-=================================
+2. Booting the images in /binary
+================================
 
 Memory Map
 ----------
@@ -155,8 +158,8 @@ nfsroot=${serverip}:/tftpboot/marzen ip=${ipaddr}
   $ saveenv
 
 
-III. Kernel notes
-=================
+3. Kernel notes
+===============
 
 Display:
 The display resolution can be changed using the fbset tool, for example:
@@ -189,3 +192,56 @@ You can then mount the card, for example:
   $ mkdir –p /mnt/sd
   $ mount /dev/mmcblk0p1 /mnt/sd
 
+
+4. Genivi notes
+===============
+
+Genivi is an Automotive Alliance with the mission to drive the broad adoption 
+of an In-Vehicle Infotainment (IVI) open-source development platform.
+More information can be found on the Genivi websites:
+http://www.genivi.org/
+http://projects.genivi.org/home 
+
+This layer has been succesfully tested with the Genivi meta-ivi layer.
+
+
+5. History
+==========
+
+5.1 Release 2.0
+---------------
+Updates:
++ Migrated to R-Car H1 BSP for Linux Kernel 3.4 Release 2.0
+  Linux Kernel:	
+  - Added Hurricane Board Support
+  - GPIO:
+      Ability to use mixed input and output pins on the same port.
+  - R-Car VIN driver:
+      Add support for 10-bit BT.656 cameras
+  - v4l2 SoC Camera driver: OmniVision ov10635:
+      Add support for 10-bit BT.656 output
+  - v4l2 SoC Camera framework:
+      Add SoC support for V4L2_MBUS_FMT_YUYV10_2X10
+  - MMC driver:
+      Back port of upstream/pending fixes.
+  - ALSA SoC: ak4642:
+      Add support for linein/lineout and mic in/headphone out.
+  - HPB DMAC
+      Fix use for SDHI (fixes incorrectly numbered DMA channels).
+      Driver ability to support separate Tx and Rx channels on the same physical DMAC channel. 
+      This is needed to allow the MMC driver to use DMA, and also needed when more peripherals use DMA.
+  - USB
+      Fixed pin multiplexing for USB ch 2
+
+  U-Boot:
+  - Added Hurricane Board Support
+      Support standard (non-eMMC) mode
+      Support eMMC mode
+
++ Kernel, U-Boot and Yocto BSP now hosted on github
++ Removed yocto kernel recipe support
++ Renamed mainline kernel recipe to linux-yocto-custom
+
+5.2 Release 1.0
+---------------
+Initial release
